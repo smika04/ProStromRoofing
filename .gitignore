@@ -1,0 +1,10 @@
+# Build / temporary files
+/.tmp/
+/dist/
+/node_modules/
+/.idea/
+
+# Minified files
+/app/css/header_main.min.css
+/app/css/style.min.css
+/app/js/libs.min.js

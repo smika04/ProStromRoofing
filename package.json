@@ -1,0 +1,37 @@
+{
+  "name": "gulp-start",
+  "version": "1.0.0",
+  "description": "start gulp",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "gulp",
+    "build": "gulp build"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.29.3",
+    "del": "^6.1.1",
+    "esbuild": "^0.28.1",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^8.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-esbuild": "^0.8.2",
+    "gulp-file-include": "^2.3.0",
+    "gulp-rename": "^2.0.0",
+    "gulp-sass": "^5.1.0",
+    "gulp-uglify": "^3.0.0"
+  },
+  "dependencies": {
+    "jquery": "^3.7.1",
+    "normalize.css": "^8.0.1",
+    "sass": "^1.77.0",
+    "slick-carousel": "^1.8.1",
+    "svg-injector": "^1.1.3"
+  },
+  "_notes": {
+    "jquery": "Keep below version 4.0.0. Slick Carousel does not support jQuery 4.x. Use 3.7.1.",
+    "gulp-esbuild": "Used for JavaScript bundling with import/export modules."
+  }
+}
