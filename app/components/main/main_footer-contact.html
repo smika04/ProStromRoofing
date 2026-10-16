@@ -1,0 +1,45 @@
+<section class="section contact" id="contact">
+    <div class="contact__content reveal">
+        <span class="kicker">Let’s protect what matters</span>
+        <h2>Ready for a roof built <em>better?</em></h2>
+        <p>Tell us about your project. We’ll follow up with an honest assessment and a clear path forward.</p>
+
+        <a class="phone-link" href="tel:6047994080">(604) 799-4080</a>
+    </div>
+
+    <form class="form reveal" id="estimateForm">
+        <div class="form__row">
+            <label>
+                <span>Your name</span>
+                <input type="text" name="name" placeholder="John Smith" required>
+            </label>
+
+            <label>
+                <span>Phone number</span>
+                <input type="tel" name="phone" placeholder="(604) 000-0000" required>
+            </label>
+        </div>
+
+        <label>
+            <span>Email address</span>
+            <input type="email" name="email" placeholder="john@example.com" required>
+        </label>
+
+        <label>
+            <span>How can we help?</span>
+            <select name="service" required>
+                <option value="">Select a service</option>
+                <option>Roof replacement</option>
+                <option>Roof repair</option>
+                <option>Inspection & maintenance</option>
+                <option>Other</option>
+            </select>
+        </label>
+
+        <button class="btn form__submit" type="submit">Request my free estimate</button>
+
+        <p class="form__message" id="formMessage" hidden>
+            Thank you! Your request has been received.
+        </p>
+    </form>
+</section>
