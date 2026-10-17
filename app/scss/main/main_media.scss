@@ -249,6 +249,13 @@
   .service-card-logo img {
     width: min(52%, 190px);
   }
+
+  .btn-look_more_projects {
+    width: 50%;
+    min-width: max-content;
+    margin: 46px auto 0;
+    flex-wrap: nowrap;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

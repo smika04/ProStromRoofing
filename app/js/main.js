@@ -26,10 +26,5 @@ $(function () {
             services_script();
         }
     );
-
-    console.log("BEFORE main_script");
-
     main_script();
-
-    console.log("AFTER main_script");
 });

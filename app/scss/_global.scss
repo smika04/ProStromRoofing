@@ -7,7 +7,9 @@ html {
 }
 
 body {
-  margin: 0;
+  margin: 0 auto;
+  max-width: 2560px;
+  min-height: 100vh;
   background: var(--paper);
   color: var(--ink);
   font-family: "DM Sans", sans-serif;
