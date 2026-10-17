@@ -274,3 +274,162 @@
     transform: none;
   }
 }
+
+// ... existing code ...
+
+@media (max-width: 1180px) {
+  .section {
+    padding-right: clamp(22px, 5vw, 54px);
+    padding-left: clamp(22px, 5vw, 54px);
+  }
+
+  .about {
+    grid-template-columns: 1fr;
+    gap: 44px;
+  }
+
+  .about__image img {
+    height: clamp(420px, 58vw, 620px);
+  }
+
+  .project-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .btn-look_more_projects {
+    width: min(100%, 360px);
+  }
+}
+
+@media (max-width: 760px) {
+  .section {
+    padding: 72px 22px;
+  }
+
+  .section__heading {
+    max-width: 100%;
+  }
+
+  .section__heading h2,
+  .about__content h2,
+  .contact__content h2 {
+    font-size: clamp(34px, 10vw, 52px);
+    line-height: 1.05;
+  }
+
+  .section__heading p,
+  .about__content p,
+  .contact__content p {
+    font-size: 15px;
+    line-height: 1.65;
+  }
+
+  .project-grid {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .project-card img {
+    height: clamp(280px, 72vw, 420px);
+  }
+
+  .project-card div {
+    padding: 18px;
+  }
+
+  .project-card h3 {
+    font-size: 22px;
+  }
+
+  .btn-look_more_projects,
+  .btn-describe_more_us,
+  .btn-look_more_reviews {
+    width: 100%;
+    min-width: 0;
+    justify-content: center;
+  }
+
+  .about {
+    gap: 34px;
+  }
+
+  .about__image img {
+    height: clamp(320px, 78vw, 440px);
+  }
+
+  .about-certificates {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .about-certificate {
+    width: 100%;
+  }
+
+  .product-we-use {
+    margin-top: 34px;
+  }
+
+  .product-brands {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .product-brands img {
+    max-width: 128px;
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    padding: 62px 18px;
+  }
+
+  .hero {
+    min-height: 620px;
+  }
+
+  .hero__content {
+    padding-right: 18px;
+    padding-left: 18px;
+  }
+
+  .hero h1 {
+    font-size: clamp(42px, 14vw, 58px);
+  }
+
+  .hero-experience {
+    right: 18px;
+    left: 18px;
+    width: auto;
+  }
+
+  .about-certificates {
+    grid-template-columns: 1fr;
+  }
+
+  .about-certificate {
+    height: 86px;
+  }
+
+  .product-brands {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .product-brands img {
+    max-width: 110px;
+  }
+
+  .project-card img {
+    height: 300px;
+  }
+
+  .btn-look_more_projects,
+  .btn-describe_more_us,
+  .btn-look_more_reviews {
+    min-height: 48px;
+    padding-right: 52px;
+    padding-left: 18px;
+    font-size: 10px;
+  }
+}
