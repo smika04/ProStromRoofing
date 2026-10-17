@@ -1,79 +1,35 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const header = document.querySelector('.header');
-    const menuBtn = document.querySelector('#menuBtn');
-    const nav = document.querySelector('#nav');
-    const navLinks = document.querySelectorAll('.nav a');
-    const form = document.querySelector('#estimateForm');
-    const formMessage = document.querySelector('#formMessage');
+import { about_us_script } from "./about_us-page_script.js";
+import { careers_script } from "./careers-page_script.js";
+import { main_script } from "./main-page_script.js";
+import { our_projects_script } from "./our_projects-page_script.js";
+import { services_script } from "./services-page_script.js";
 
-    function handleScroll() {
-        if (!header) return;
+import SVGInjector from "svg-injector";
 
-        if (window.scrollY > 40) {
-            header.classList.add('is-scrolled');
-        } else {
-            header.classList.remove('is-scrolled');
+$(function () {
+    document.querySelector(".logo")?.addEventListener("click", (event) => {
+        event.preventDefault();
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    });
+
+    SVGInjector(
+        document.querySelectorAll(".svg-inject"),
+        {},
+        function () {
+            about_us_script();
+            careers_script();
+            our_projects_script();
+            services_script();
         }
-    }
+    );
 
-    handleScroll();
-    window.addEventListener('scroll', handleScroll, { passive: true });
+    console.log("BEFORE main_script");
 
-    if (menuBtn && nav) {
-        menuBtn.addEventListener('click', function () {
-            const isOpen = nav.classList.toggle('is-open');
+    main_script();
 
-            menuBtn.classList.toggle('is-active', isOpen);
-            menuBtn.setAttribute('aria-expanded', String(isOpen));
-            document.body.classList.toggle('lock', isOpen);
-        });
-
-        navLinks.forEach(function (link) {
-            link.addEventListener('click', function () {
-                nav.classList.remove('is-open');
-                menuBtn.classList.remove('is-active');
-                menuBtn.setAttribute('aria-expanded', 'false');
-                document.body.classList.remove('lock');
-            });
-        });
-    }
-
-    const revealElements = document.querySelectorAll('.reveal');
-
-    if ('IntersectionObserver' in window) {
-        const observer = new IntersectionObserver(
-            function (entries) {
-                entries.forEach(function (entry) {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('is-visible');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            },
-            {
-                threshold: 0.14
-            }
-        );
-
-        revealElements.forEach(function (element) {
-            observer.observe(element);
-        });
-    } else {
-        revealElements.forEach(function (element) {
-            element.classList.add('is-visible');
-        });
-    }
-
-    if (form && formMessage) {
-        form.addEventListener('submit', function (event) {
-            event.preventDefault();
-
-            form.reset();
-            formMessage.hidden = false;
-
-            setTimeout(function () {
-                formMessage.hidden = true;
-            }, 5000);
-        });
-    }
+    console.log("AFTER main_script");
 });
