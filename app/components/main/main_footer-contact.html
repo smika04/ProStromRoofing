@@ -1,10 +1,48 @@
 <section class="section contact" id="contact">
-    <div class="contact__content reveal">
-        <span class="kicker">Let’s protect what matters</span>
-        <h2>Ready for a roof built <em>better?</em></h2>
-        <p>Tell us about your project. We’ll follow up with an honest assessment and a clear path forward.</p>
+    <div>
+        <div class="contact__content reveal">
+            <span class="kicker">Let’s protect what matters</span>
+            <h2>Ready for a roof built <em>better?</em></h2>
+            <p>Tell us about your project. We’ll follow up with an honest assessment and a clear path forward.</p>
+        </div>
 
-        <a class="phone-link" href="tel:6047994080">(604) 799-4080</a>
+        <div class="contact-next reveal">
+            <span class="contact-next__kicker">What happens next</span>
+
+            <ol class="contact-next__list">
+                <li class="contact-next__item">
+                    <span class="contact-next__number">01</span>
+
+                    <div>
+                        <h3>We review your request</h3>
+                        <p>Our team will contact you within one business day.</p>
+                    </div>
+                </li>
+
+                <li class="contact-next__item">
+                    <span class="contact-next__number">02</span>
+
+                    <div>
+                        <h3>On-site assessment</h3>
+                        <p>We inspect the roof and discuss the right options.</p>
+                    </div>
+                </li>
+
+                <li class="contact-next__item">
+                    <span class="contact-next__number">03</span>
+
+                    <div>
+                        <h3>Clear proposal</h3>
+                        <p>You receive transparent scope, pricing, and timing.</p>
+                    </div>
+                </li>
+            </ol>
+
+            <div class="contact-next__call">
+                <span>Prefer to call?</span>
+                <a href="tel:6047994080">(604) 799-4080</a>
+            </div>
+        </div>
     </div>
 
     <form class="form reveal" id="estimateForm">
@@ -129,6 +167,24 @@
 
                 <input type="hidden" name="service" data-service-dropdown-input required>
             </div>
+        </div>
+
+        <label class="form__textarea-field">
+            <span>Project details</span>
+            <textarea name="message" placeholder="Tell us more about your roof or project" rows="4"></textarea>
+        </label>
+
+        <div class="form__photos" data-photo-uploader>
+            <span class="form__photos-title">Attach a photo to help us provide more accurate feedback.</span>
+
+            <div class="form__photos-list" data-photo-list></div>
+
+            <label class="form__photo-add" data-photo-add>
+                <input type="file" name="photos[]" accept="image/*" data-photo-input>
+                <span>Upload photo</span>
+            </label>
+
+            <p class="form__photos-note">You can add up to 3 photos.</p>
         </div>
 
         <button class="btn form__submit" type="submit">Request my free estimate</button>

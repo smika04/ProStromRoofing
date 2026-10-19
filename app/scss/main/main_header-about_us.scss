@@ -116,10 +116,10 @@
 .btn-describe_more_us {
   position: relative;
   display: inline-flex;
-  width: fit-content;
+  width: 332px;
   min-height: 52px;
   margin-top: 34px;
-  padding: 0 58px 0 24px;
+  padding: 4px 58px 0 24px;
   align-items: center;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.18);
@@ -135,6 +135,7 @@
           color 0.35s ease,
           transform 0.35s ease;
 }
+
 
 .btn-describe_more_us::before {
   content: "";

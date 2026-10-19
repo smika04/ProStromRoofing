@@ -85,19 +85,37 @@
 }
 
 .header__btn {
+  position: relative;
   justify-self: end;
-  padding: 13px 18px;
+  padding: 13px 40px 13px 18px;
   background: var(--ink);
   color: var(--white);
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  transition: background 0.25s ease;
+  transition: background 0.5s ease, color 0.5s ease;
+}
+
+.nav a.header__btn::after {
+  content: "→" !important;
+  position: absolute;
+  top: 50%;
+  right: 14px;
+  bottom: auto;
+  left: auto;
+  width: auto;
+  height: auto;
+  background: none;
+  transform: translateY(-50%);
+  font-size: 16px;
+  line-height: 1;
+  transition: none;
 }
 
 .header__btn:hover {
   background: var(--accent);
+  color: var(--ink);
 }
 
 .menu-btn {

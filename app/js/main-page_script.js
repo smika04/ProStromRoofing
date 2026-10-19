@@ -1,4 +1,4 @@
-export function main_script() {
+window.mainPageScript = function () {
     const header = document.querySelector('.header');
     const menuBtn = document.querySelector('#menuBtn');
     const nav = document.querySelector('#nav');
@@ -82,6 +82,86 @@ export function main_script() {
         const serviceDropdownText = serviceDropdown?.querySelector('[data-service-dropdown-text]');
         const serviceDropdownInput = serviceDropdown?.querySelector('[data-service-dropdown-input]');
         const serviceDropdownOptions = serviceDropdown?.querySelectorAll('.service-dropdown__options button');
+
+        const photoUploader = form.querySelector('[data-photo-uploader]');
+        const photoList = photoUploader?.querySelector('[data-photo-list]');
+        const photoAdd = photoUploader?.querySelector('[data-photo-add]');
+        const photoInput = photoUploader?.querySelector('[data-photo-input]');
+        const selectedPhotos = [];
+        const maxPhotos = 3;
+
+        function updatePhotoAddVisibility() {
+            if (!photoAdd) return;
+
+            photoAdd.classList.toggle('is-hidden', selectedPhotos.length >= maxPhotos);
+        }
+
+        function renderPhotos() {
+            if (!photoList) return;
+
+            photoList.innerHTML = '';
+
+            selectedPhotos.forEach(function (file, index) {
+                const photoItem = document.createElement('div');
+                photoItem.className = 'form__photo-item';
+
+                const preview = document.createElement('img');
+                preview.className = 'form__photo-preview';
+                preview.src = URL.createObjectURL(file);
+                preview.alt = file.name;
+
+                preview.addEventListener('load', function () {
+                    URL.revokeObjectURL(preview.src);
+                });
+
+                const name = document.createElement('span');
+                name.className = 'form__photo-name';
+                name.textContent = file.name;
+
+                const removeButton = document.createElement('button');
+                removeButton.className = 'form__photo-remove';
+                removeButton.type = 'button';
+                removeButton.textContent = 'Remove';
+
+                removeButton.addEventListener('click', function () {
+                    selectedPhotos.splice(index, 1);
+                    renderPhotos();
+                });
+
+                photoItem.append(preview, name, removeButton);
+                photoList.append(photoItem);
+            });
+
+            updatePhotoAddVisibility();
+        }
+
+        function resetPhotos() {
+            selectedPhotos.length = 0;
+
+            if (photoInput) {
+                photoInput.value = '';
+            }
+
+            renderPhotos();
+        }
+
+        if (photoInput) {
+            photoInput.addEventListener('change', function () {
+                const files = Array.from(photoInput.files || []);
+                const availableSlots = maxPhotos - selectedPhotos.length;
+
+                files.slice(0, availableSlots).forEach(function (file) {
+                    if (file.type.startsWith('image/')) {
+                        selectedPhotos.push(file);
+                    }
+                });
+
+                photoInput.value = '';
+                renderPhotos();
+            });
+
+            updatePhotoAddVisibility();
+        }
 
         function setFieldVisibility(field, input, shouldShow) {
             if (!field || !input) return;
@@ -190,6 +270,7 @@ export function main_script() {
                 form.reset();
                 updateContactFields();
                 resetServiceDropdown();
+                resetPhotos();
 
                 formMessage.hidden = false;
 
@@ -202,7 +283,7 @@ export function main_script() {
 
     const reviewSlider = $('.review_slider');
 
-    if (reviewSlider.length && $.fn.slick) {
+    if (reviewSlider.length && $.fn.slick && !reviewSlider.hasClass('slick-initialized')) {
         reviewSlider.slick({
             slidesToShow: 1,
             slidesToScroll: 1,
@@ -214,7 +295,7 @@ export function main_script() {
             draggable: true,
             swipe: true,
             touchMove: true,
-            accessibility: true,
+            accessibility: false,
             adaptiveHeight: true,
             speed: 420,
             cssEase: 'ease',
@@ -222,4 +303,4 @@ export function main_script() {
             pauseOnFocus: true
         });
     }
-}
+};

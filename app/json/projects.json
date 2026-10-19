@@ -1,19 +1,34 @@
-{
-  "main_photo": "",
-  "preview_photo": "",
-
-  "list_photos": [],
-
-  "title": "",
-  "city": "",
-  "description": "",
-
-  "materials": [
-    {
-      "name": "",
-      "brand": "",
-      "color": "",
-      "description": ""
-    }
-  ]
-}
+[
+  {
+    "main_photo": "",
+    "preview_photo": "",
+    "list_photos": [],
+    "title": "",
+    "city": "",
+    "description": "",
+    "materials": [
+      {
+        "name": "",
+        "brand": "",
+        "color": "",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "main_photo": "",
+    "preview_photo": "",
+    "list_photos": [],
+    "title": "",
+    "city": "",
+    "description": "",
+    "materials": [
+      {
+        "name": "",
+        "brand": "",
+        "color": "",
+        "description": ""
+      }
+    ]
+  }
+]
