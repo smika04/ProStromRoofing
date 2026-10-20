@@ -179,6 +179,10 @@
   transition: color 0.45s ease;
 }
 
+.service-card__top_about > span {
+  margin-bottom: 30px;
+}
+
 .service-card__icon {
   display: grid;
   width: 58px;
