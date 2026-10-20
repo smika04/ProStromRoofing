@@ -1,0 +1,197 @@
+<section class="section contact" id="contact">
+    <div>
+        <div class="contact__content reveal">
+            <span class="kicker">Apply today</span>
+            <h2>Start your next <em>chapter.</em></h2>
+            <p>Tell us a little about yourself. Experience is valued, but reliability
+                and a strong work ethic matter just as much.</p>
+        </div>
+
+        <div class="contact-next reveal">
+            <span class="contact-next__kicker">What happens next</span>
+
+            <ol class="contact-next__list">
+                <li class="contact-next__item">
+                    <span class="contact-next__number">01</span>
+
+                    <div>
+                        <h3>We review your application</h3>
+                        <p>Our team reviews your experience, skills, and interest in joining Storm Pro Roofing.</p>
+                    </div>
+                </li>
+
+                <li class="contact-next__item">
+                    <span class="contact-next__number">02</span>
+
+                    <div>
+                        <h3>Let's talk</h3>
+                        <p>If your experience matches the role, we'll contact you to discuss the position and next steps.</p>
+                    </div>
+                </li>
+
+                <li class="contact-next__item">
+                    <span class="contact-next__number">03</span>
+
+                    <div>
+                        <h3>Find the right fit</h3>
+                        <p>We'll discuss your skills, availability, and how you could contribute to our team.</p>
+                    </div>
+                </li>
+            </ol>
+
+            <div class="contact-next__call">
+                <span>Have questions?</span>
+                <a href="tel:6047994080">(604) 799-4080</a>
+            </div>
+        </div>
+    </div>
+
+    <form class="form reveal" id="estimateForm">
+        <label>
+            <span>Your name</span>
+            <input type="text" name="name" placeholder="John Smith" required>
+        </label>
+
+        <fieldset class="form__choice-group">
+            <legend>Preferred contact method</legend>
+
+            <div class="form__choices">
+                <label class="form__choice">
+                    <input type="radio" name="contact_method" value="phone" required>
+                    <span>Phone</span>
+                </label>
+
+                <label class="form__choice">
+                    <input type="radio" name="contact_method" value="email" required>
+                    <span>Email</span>
+                </label>
+
+                <label class="form__choice">
+                    <input type="radio" name="contact_method" value="both" required>
+                    <span>Phone & Email</span>
+                </label>
+            </div>
+        </fieldset>
+
+        <div class="form__conditional-field" data-contact-field="phone">
+            <label>
+                <span>Phone number</span>
+                <input type="tel" name="phone" placeholder="(604) 000-0000">
+            </label>
+        </div>
+
+        <div class="form__conditional-field" data-contact-field="email">
+            <label>
+                <span>Email address</span>
+                <input type="email" name="email" placeholder="john@example.com">
+            </label>
+        </div>
+
+        <div class="form__callback">
+            <fieldset class="form__choice-group">
+                <legend>Preferred days to call</legend>
+
+                <div class="form__choices">
+                    <label class="form__choice">
+                        <input type="checkbox" name="callback_days[]" value="monday">
+                        <span>Mon</span>
+                    </label>
+
+                    <label class="form__choice">
+                        <input type="checkbox" name="callback_days[]" value="tuesday">
+                        <span>Tue</span>
+                    </label>
+
+                    <label class="form__choice">
+                        <input type="checkbox" name="callback_days[]" value="wednesday">
+                        <span>Wed</span>
+                    </label>
+
+                    <label class="form__choice">
+                        <input type="checkbox" name="callback_days[]" value="thursday">
+                        <span>Thu</span>
+                    </label>
+
+                    <label class="form__choice">
+                        <input type="checkbox" name="callback_days[]" value="friday">
+                        <span>Fri</span>
+                    </label>
+
+                    <label class="form__choice">
+                        <input type="checkbox" name="callback_days[]" value="saturday">
+                        <span>Sat</span>
+                    </label>
+
+                    <label class="form__choice">
+                        <input type="checkbox" name="callback_days[]" value="saturday">
+                        <span>Sun</span>
+                    </label>
+                </div>
+            </fieldset>
+
+            <fieldset class="form__choice-group">
+                <legend>Preferred time to call</legend>
+
+                <div class="form__choices">
+                    <label class="form__choice">
+                        <input type="radio" name="callback_time" value="morning">
+                        <span>Morning</span>
+                    </label>
+
+                    <label class="form__choice">
+                        <input type="radio" name="callback_time" value="afternoon">
+                        <span>Afternoon</span>
+                    </label>
+
+                    <label class="form__choice">
+                        <input type="radio" name="callback_time" value="evening">
+                        <span>Evening</span>
+                    </label>
+                </div>
+            </fieldset>
+        </div>
+
+        <div class="service-field">
+            <span>How can we help?</span>
+
+            <div class="service-dropdown" data-service-dropdown>
+                <button class="service-dropdown__button" type="button" aria-expanded="false">
+                    <span data-service-dropdown-text>Select a service</span>
+                </button>
+
+                <div class="service-dropdown__options">
+                    <button type="button" data-value="roof-replacement">Roof replacement</button>
+                    <button type="button" data-value="roof-repair">Roof repair</button>
+                    <button type="button" data-value="inspection-maintenance">Inspection & maintenance</button>
+                    <button type="button" data-value="custom">Custom</button>
+                </div>
+
+                <input type="hidden" name="service" data-service-dropdown-input required>
+            </div>
+        </div>
+
+        <label class="form__textarea-field">
+            <span>Project details</span>
+            <textarea name="message" placeholder="Tell us more about your roof or project" rows="4"></textarea>
+        </label>
+
+        <div class="form__photos" data-photo-uploader>
+            <span class="form__photos-title">Attach a photo to help us provide more accurate feedback.</span>
+
+            <div class="form__photos-list" data-photo-list></div>
+
+            <label class="form__photo-add" data-photo-add>
+                <input type="file" name="photos[]" accept="image/*" data-photo-input>
+                <span>Upload photo</span>
+            </label>
+
+            <p class="form__photos-note">You can add up to 3 photos.</p>
+        </div>
+
+        <button class="btn form__submit" type="submit">Request my free estimate</button>
+
+        <p class="form__message" id="formMessage" hidden>
+            Thank you! Your request has been received.
+        </p>
+    </form>
+</section>

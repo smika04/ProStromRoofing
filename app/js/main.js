@@ -1,28 +1,20 @@
+import { anim_scroll } from './scripts/anim_scroll.js';
+import { initLogoScroll } from './scripts/logo_scroll.js';
+import { initMenuHandleScroll } from './scripts/menu_hangle_scroll.js';
+import { initContactForm } from './scripts/contact.js';
+import { initSvgInject } from './scripts/svg-inject.js';
+
 $(function () {
-    function runPageScripts() {
+    function runMainScripts() {
+        anim_scroll();
+        initLogoScroll();
+        initMenuHandleScroll();
+        initContactForm();
+
         if (typeof window.mainPageScript === 'function') {
             window.mainPageScript();
         }
     }
 
-    document.querySelector(".logo")?.addEventListener("click", function (event) {
-        event.preventDefault();
-
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
-    });
-
-    if (typeof SVGInjector === 'function') {
-        SVGInjector(
-            document.querySelectorAll(".svg-inject"),
-            {},
-            function () {
-                runPageScripts();
-            }
-        );
-    } else {
-        runPageScripts();
-    }
+    initSvgInject(runMainScripts);
 });
