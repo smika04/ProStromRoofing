@@ -1,5 +1,8 @@
 const fileinclude = require('gulp-file-include');
 
+//Start with domen
+//npm run build -- --baseHref=/ProStromRoofing/
+
 let gulp = require('gulp'),
     esbuild = require('gulp-esbuild'),
     sass = require('gulp-sass')(require('sass')),
@@ -9,6 +12,40 @@ let gulp = require('gulp'),
     rename = require('gulp-rename'),
     del = require('del'),
     autoprefixer = require('gulp-autoprefixer');
+
+function getArgumentValue(name, defaultValue) {
+    const argumentWithEquals = process.argv.find(function (argument) {
+        return argument.startsWith('--' + name + '=');
+    });
+
+    if (argumentWithEquals) {
+        return argumentWithEquals.split('=').slice(1).join('=');
+    }
+
+    const argumentIndex = process.argv.findIndex(function (argument) {
+        return argument === '--' + name;
+    });
+
+    if (argumentIndex !== -1 && process.argv[argumentIndex + 1]) {
+        return process.argv[argumentIndex + 1];
+    }
+
+    return defaultValue;
+}
+
+function normalizeBaseHref(value) {
+    if (!value) {
+        return '/';
+    }
+
+    if (value === './') {
+        return './';
+    }
+
+    return value.endsWith('/') ? value : value + '/';
+}
+
+const baseHref = normalizeBaseHref(getArgumentValue('baseHref', '/'));
 
 // Чисті URL для сторінок
 const pageRoutes = {
@@ -80,7 +117,10 @@ gulp.task('html', function () {
     })
         .pipe(fileinclude({
             prefix: '@@',
-            basepath: 'app/'
+            basepath: 'app/',
+            context: {
+                baseHref: baseHref
+            }
         }))
         .pipe(rename(function (path) {
             if (path.dirname === 'pages') {
@@ -227,10 +267,10 @@ gulp.task('watch', function () {
     );
 
     console.log('👀 Watching app files...');
+    console.log('🔗 baseHref:', baseHref);
 });
 
 // 🚀 EXPORT HTML
-// Експортуємо вже оброблені HTML-файли зі збереженням структури URL.
 gulp.task('export-html', function () {
     return gulp.src('.tmp/**/*.html', {
         base: '.tmp'
