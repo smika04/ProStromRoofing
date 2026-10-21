@@ -15,11 +15,11 @@ export function initContactForm() {
         const callbackDayInputs = form.querySelectorAll('input[name="callback_days[]"]');
         const callbackTimeInputs = form.querySelectorAll('input[name="callback_time"]');
 
-        const serviceDropdown = form.querySelector('[data-service-dropdown]');
-        const serviceDropdownButton = serviceDropdown?.querySelector('.service-dropdown__button');
-        const serviceDropdownText = serviceDropdown?.querySelector('[data-service-dropdown-text]');
-        const serviceDropdownInput = serviceDropdown?.querySelector('[data-service-dropdown-input]');
-        const serviceDropdownOptions = serviceDropdown?.querySelectorAll('.service-dropdown__options button');
+        const serviceDropdown = form.querySelector('[data-services-dropdown]');
+        const serviceDropdownButton = serviceDropdown?.querySelector('.services-dropdown__button');
+        const serviceDropdownText = serviceDropdown?.querySelector('[data-services-dropdown-text]');
+        const serviceDropdownInput = serviceDropdown?.querySelector('[data-services-dropdown-input]');
+        const serviceDropdownOptions = serviceDropdown?.querySelectorAll('.services-dropdown__options button');
 
         const photoUploader = form.querySelector('[data-photo-uploader]');
         const photoList = photoUploader?.querySelector('[data-photo-list]');
@@ -152,7 +152,7 @@ export function initContactForm() {
         function resetServiceDropdown() {
             if (!serviceDropdown || !serviceDropdownText || !serviceDropdownInput || !serviceDropdownOptions) return;
 
-            serviceDropdownText.textContent = 'Select a service';
+            serviceDropdownText.textContent = 'Select a services';
             serviceDropdownInput.value = '';
 
             serviceDropdownOptions.forEach(function (option) {

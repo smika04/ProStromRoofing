@@ -21,6 +21,24 @@
   right: 0;
 }
 
+@media (hover: hover) and (pointer: fine) {
+  .logo:hover::after {
+    right: 0;
+  }
+}
+
+@media (hover: none), (pointer: coarse) {
+  .logo::after {
+    right: 100%;
+  }
+
+  .logo:hover::after,
+  .logo:active::after,
+  .logo:focus::after {
+    right: 100%;
+  }
+}
+
 .logo img,
 .logo .svg-inject {
   display: block;
@@ -78,6 +96,13 @@
   height: 1px;
   background: var(--accent);
   transition: right 0.25s ease;
+}
+
+.nav.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
 }
 
 .nav a:hover::after {

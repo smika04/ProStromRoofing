@@ -138,10 +138,16 @@ gulp.task('html', function () {
 
 // ⚡ JS BUNDLE
 gulp.task('script', function () {
-    return gulp.src('app/js/main.js')
+    return gulp.src([
+        'app/js/main.js',
+        'app/js/main_page/main-page_script.js',
+        'app/js/careers_page/careers-page_script.js',
+        'app/js/our_projects/our_projects-page_script.js'
+    ], {
+        base: 'app/js'
+    })
         .pipe(esbuild({
             bundle: true,
-            outfile: 'main.js',
             format: 'iife',
             sourcemap: true,
             target: ['es2018']
@@ -154,7 +160,20 @@ gulp.task('script', function () {
 gulp.task('js-files', function () {
     return gulp.src([
         'app/js/**/*.js',
+
+        // Entry-файли збираються через esbuild у task "script"
         '!app/js/main.js',
+        '!app/js/main_page/main-page_script.js',
+        '!app/js/careers_page/careers-page_script.js',
+        '!app/js/our_projects/our_projects-page_script.js',
+
+        // Модулі не треба копіювати напряму в браузер
+        '!app/js/global/**/*.js',
+        '!app/js/main_page/**/*.js',
+        '!app/js/careers_page/**/*.js',
+        '!app/js/our_projects/**/*.js',
+
+        // Minified/libs
         '!app/js/**/*.min.js'
     ], {
         allowEmpty: true

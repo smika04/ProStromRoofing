@@ -1,8 +1,8 @@
-import { anim_scroll } from './scripts/anim_scroll.js';
-import { initLogoScroll } from './scripts/logo_scroll.js';
-import { initMenuHandleScroll } from './scripts/menu_hangle_scroll.js';
-import { initContactForm } from './scripts/contact.js';
-import { initSvgInject } from './scripts/svg-inject.js';
+import { anim_scroll } from './global/anim_scroll.js';
+import { initLogoScroll } from './global/logo_scroll.js';
+import { initMenuHandleScroll } from './global/menu_hangle_scroll.js';
+import { initContactForm } from './global/contact.js';
+import { initSvgInject } from './global/svg-inject.js';
 
 $(function () {
     function runMainScripts() {
@@ -13,6 +13,10 @@ $(function () {
 
         if (typeof window.mainPageScript === 'function') {
             window.mainPageScript();
+        }
+
+        if (typeof window.careersPageScript === 'function') {
+            window.careersPageScript();
         }
     }
 
