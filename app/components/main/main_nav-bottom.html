@@ -1,13 +1,18 @@
 <footer class="footer">
-    <div>
-        <a class="logo logo--light" href="#home">
-            <img class="svg-inject" src="images/logo/LogoFull-white.svg" alt="Storm Pro Roofing">
+    <div class="footer__brand">
+        <a class="logo logo--light" href="@@baseHref">
+            <img class="svg-inject" src="../images/logo/LogoFull-white.svg" alt="Storm Pro Roofing">
         </a>
 
         <p>Premium roofing. Built to endure.</p>
+
+        <div class="footer__meta">
+            <span>Serving Chilliwack & the Fraser Valley</span>
+            <a href="tel:6047994080">(604) 799-4080</a>
+        </div>
     </div>
 
-    <div class="footer__links">
+    <nav class="footer__links" aria-label="Footer navigation">
         <a href="@@baseHrefservices/">Services</a>
         <a href="@@baseHrefabout/">About</a>
         <a href="@@baseHrefour-projects/">Projects</a>
@@ -15,10 +20,14 @@
         <a href="#contact">Contact</a>
         <a href="@@baseHrefcareers/">Careers</a>
         <a href="#contact">Free estimate</a>
-    </div>
+    </nav>
 
-    <div class="footer__meta">
-        <span>Serving Chilliwack & the Fraser Valley</span>
-        <a href="tel:6047994080">(604) 799-4080</a>
+    <div class="footer__map" aria-label="Storm Pro Roofing service area map">
+        <iframe
+                title="Storm Pro Roofing service area in Chilliwack and Fraser Valley"
+                src="https://www.google.com/maps?q=Chilliwack%20British%20Columbia&output=embed"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
     </div>
 </footer>

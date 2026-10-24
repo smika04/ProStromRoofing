@@ -1,0 +1,29 @@
+.section {
+  padding: 50px clamp(22px, 7vw, 110px);
+}
+
+.section__heading {
+  max-width: 980px;
+  margin-bottom: 60px;
+}
+
+.section__heading h2,
+.about__content h2,
+.contact__content h2 {
+  margin: 18px 0 22px;
+  font: 600 clamp(42px, 5vw, 72px) / 1.04 "Manrope", sans-serif;
+  letter-spacing: -0.055em;
+}
+
+.section__heading h2 em,
+.about__content h2 em,
+.contact__content h2 em {
+  color: var(--accent);
+}
+
+.section__heading p,
+.about__content p,
+.contact__content p {
+  color: var(--muted);
+  line-height: 1.75;
+}

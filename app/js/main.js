@@ -3,13 +3,15 @@ import { initLogoScroll } from './global/logo_scroll.js';
 import { initMenuHandleScroll } from './global/menu_hangle_scroll.js';
 import { initContactForm } from './global/contact.js';
 import { initSvgInject } from './global/svg-inject.js';
+import {getYearsCompany} from "./global/getYearsCompany";
 
 $(function () {
     function runMainScripts() {
+        initMenuHandleScroll();
         anim_scroll();
         initLogoScroll();
-        initMenuHandleScroll();
         initContactForm();
+        getYearsCompany();
 
         if (typeof window.mainPageScript === 'function') {
             window.mainPageScript();

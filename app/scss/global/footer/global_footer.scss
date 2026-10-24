@@ -1,0 +1,135 @@
+.footer {
+  display: grid;
+  grid-template-columns: minmax(340px, 0.9fr) minmax(300px, 0.65fr) minmax(460px, 1fr);
+  width: 100%;
+  max-width: 2560px;
+  margin: 0 auto;
+  background: #0d0d0e;
+  color: var(--white);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 70px clamp(22px, 7vw, 110px);
+}
+
+.footer__brand {
+  display: flex;
+  min-width: 0;
+  min-height: 320px;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: clamp(42px, 5vw, 76px) clamp(24px, 4vw, 72px);
+  border-right: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.footer__brand .logo {
+  display: inline-flex;
+  margin-bottom: 24px;
+}
+
+.footer__brand p {
+  max-width: 420px;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.64);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.footer__links {
+  display: grid;
+  grid-auto-rows: 1fr;
+  min-width: 0;
+  min-height: 320px;
+  align-content: stretch;
+  border-right: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.footer__links a {
+  display: flex;
+  width: 100%;
+  min-height: 0;
+  align-items: center;
+  padding: 0 clamp(22px, 3vw, 42px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 10px;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition:
+          color 0.25s ease,
+          background 0.25s ease,
+          padding-left 0.25s ease;
+}
+
+.footer__links a:last-child {
+  border-bottom: 0;
+}
+
+.footer__links a:hover {
+  padding-left: clamp(28px, 3.6vw, 52px);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--white);
+}
+
+.footer__meta {
+  display: grid;
+  gap: 10px;
+  margin-top: auto;
+  padding-top: 34px;
+}
+
+.footer__meta span {
+  color: rgba(255, 255, 255, 0.48);
+  font-size: 10px;
+  font-weight: 800;
+  line-height: 1.4;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.footer__meta a {
+  width: fit-content;
+  color: var(--white);
+  font-size: clamp(20px, 1.8vw, 28px);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.05em;
+}
+
+.footer__meta a:hover {
+  color: #e53935;
+}
+
+.footer__map {
+  position: relative;
+  min-width: 0;
+  min-height: 320px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.footer__map::before {
+  content: "Service area";
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 2;
+  padding: 8px 11px;
+  background: #e53935;
+  color: var(--white);
+  font-size: 8px;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.footer__map iframe {
+  width: 100%;
+  height: 100%;
+  min-height: inherit;
+  display: block;
+  border: 0;
+  filter: grayscale(1) contrast(1.05) brightness(0.82);
+}

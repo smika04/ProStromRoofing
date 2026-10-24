@@ -1,0 +1,57 @@
+.eyebrow {
+  margin: 0 0 30px;
+  color: var(--accent);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.kicker {
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.lead {
+  max-width: 460px;
+  margin: 28px 0 0;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+h1,
+h2,
+h3,
+p {
+  overflow-wrap: break-word;
+}
+
+em {
+  font-family: "Playfair Display", Georgia, serif;
+  font-style: italic;
+}
+
+.section__heading h2,
+.about__content h2,
+.contact__content h2 {
+  margin: 18px 0 22px;
+  font: 600 clamp(42px, 5vw, 72px) / 1.04 "Manrope", sans-serif;
+  letter-spacing: -0.055em;
+}
+
+.section__heading h2 em,
+.about__content h2 em,
+.contact__content h2 em {
+  color: var(--accent);
+}
+
+.section__heading p,
+.about__content p,
+.contact__content p {
+  color: var(--muted);
+  line-height: 1.75;
+}

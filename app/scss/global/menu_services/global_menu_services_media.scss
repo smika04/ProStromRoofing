@@ -1,0 +1,21 @@
+@media (max-width: 1020px) {
+  .service-grid {
+    grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+  }
+
+  .service-card,
+  .service-card-logo {
+    min-height: 360px;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .service-card-logo {
+    min-height: 280px;
+  }
+
+  .service-card-logo img {
+    width: min(52%, 190px);
+  }
+}

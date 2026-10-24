@@ -1,7 +1,7 @@
 const fileinclude = require('gulp-file-include');
 
-//Start with domen
-//npm run build -- --baseHref=/ProStromRoofing/
+// Start with domain
+// npm run build -- --baseHref=/ProStromRoofing/
 
 let gulp = require('gulp'),
     esbuild = require('gulp-esbuild'),
@@ -47,7 +47,7 @@ function normalizeBaseHref(value) {
 
 const baseHref = normalizeBaseHref(getArgumentValue('baseHref', '/'));
 
-// Чисті URL для сторінок
+// Clean URLs for pages
 const pageRoutes = {
     about_us: 'about',
     careers: 'careers',
@@ -63,15 +63,49 @@ gulp.task('clean', function () {
 
 // 🎨 SCSS
 gulp.task('scss', function () {
-    return gulp.src('app/scss/style.scss')
+    return gulp.src([
+        'app/scss/style.scss',
+
+        'app/scss/main/main.scss',
+        'app/scss/about_us/about.scss',
+        'app/scss/careers/careers.scss',
+        'app/scss/our_projects/projects.scss',
+        'app/scss/services/services.scss'
+    ], {
+        base: 'app/scss'
+    })
         .pipe(sass({
             outputStyle: 'compressed'
         }).on('error', sass.logError))
         .pipe(autoprefixer({
             overrideBrowserslist: ['last 8 versions']
         }))
-        .pipe(rename({
-            suffix: '.min'
+        .pipe(rename(function (path) {
+            if (path.basename === 'style') {
+                path.basename = 'style.min';
+            }
+
+            if (path.basename === 'main') {
+                path.basename = 'main.min';
+            }
+
+            if (path.basename === 'about') {
+                path.basename = 'about.min';
+            }
+
+            if (path.basename === 'careers') {
+                path.basename = 'careers.min';
+            }
+
+            if (path.basename === 'projects') {
+                path.basename = 'projects.min';
+            }
+
+            if (path.basename === 'services') {
+                path.basename = 'services.min';
+            }
+
+            path.dirname = '';
         }))
         .pipe(gulp.dest('.tmp/css'))
         .pipe(browserSync.reload({ stream: true }));
@@ -82,7 +116,9 @@ gulp.task('css-libs', function () {
     return gulp.src([
         'node_modules/normalize.css/normalize.css',
         'node_modules/slick-carousel/slick/slick.css'
-    ])
+    ], {
+        allowEmpty: true
+    })
         .pipe(concat('libs.min.css'))
         .pipe(gulp.dest('.tmp/css'))
         .pipe(browserSync.reload({ stream: true }));
@@ -103,7 +139,8 @@ gulp.task('css-files', function () {
 // 🎨 CSS ALL
 gulp.task('css', gulp.parallel(
     'css-libs',
-    'css-files'
+    'css-files',
+    'scss'
 ));
 
 // 🧩 HTML INCLUDE + CLEAN URL
@@ -161,13 +198,13 @@ gulp.task('js-files', function () {
     return gulp.src([
         'app/js/**/*.js',
 
-        // Entry-файли збираються через esbuild у task "script"
+        // Entry files are bundled through task "script"
         '!app/js/main.js',
         '!app/js/main_page/main-page_script.js',
         '!app/js/careers_page/careers-page_script.js',
         '!app/js/our_projects/our_projects-page_script.js',
 
-        // Модулі не треба копіювати напряму в браузер
+        // Modules should not be copied directly to browser
         '!app/js/global/**/*.js',
         '!app/js/main_page/**/*.js',
         '!app/js/careers_page/**/*.js',
@@ -187,7 +224,9 @@ gulp.task('js-libs', function () {
     return gulp.src([
         'node_modules/jquery/dist/jquery.min.js',
         'node_modules/slick-carousel/slick/slick.js'
-    ])
+    ], {
+        allowEmpty: true
+    })
         .pipe(concat('libs.min.js'))
         .pipe(uglify())
         .pipe(gulp.dest('.tmp/js'))
@@ -352,7 +391,6 @@ gulp.task('build', gulp.series(
     'clean',
     gulp.parallel(
         'html',
-        'scss',
         'css',
         'js',
         'images',
@@ -366,7 +404,6 @@ gulp.task('build', gulp.series(
 gulp.task('default', gulp.series(
     gulp.parallel(
         'html',
-        'scss',
         'css',
         'js',
         'images',

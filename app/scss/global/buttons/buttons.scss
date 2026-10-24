@@ -1,0 +1,182 @@
+.btn,
+.btn-look_more_projects,
+.btn-describe_more_us,
+.btn-look_more_reviews {
+  position: relative;
+  display: inline-flex;
+  width: fit-content;
+  min-height: 52px;
+  align-items: center;
+  overflow: hidden;
+  isolation: isolate;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  transition:
+          border-color 0.35s ease,
+          color 0.35s ease,
+          transform 0.35s ease;
+}
+
+.btn {
+  justify-content: center;
+  padding: 0 64px 0 24px;
+  border: 1px solid var(--accent);
+  background: var(--accent);
+  color: var(--white);
+  cursor: pointer;
+}
+
+.btn-describe_more_us{
+  width: 334px;
+}
+
+.btn-look_more_projects,
+.btn-describe_more_us,
+.btn-look_more_reviews {
+  padding: 0 58px 0 24px;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--ink);
+}
+
+.btn-look_more_reviews {
+  min-height: 48px;
+  margin-top: 28px;
+  border-color: rgba(255, 255, 255, 0.28);
+  color: var(--white);
+}
+
+.btn::before,
+.btn-look_more_projects::before,
+.btn-describe_more_us::before,
+.btn-look_more_reviews::before {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  z-index: -1;
+  height: 0;
+  transition: height 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.btn::before {
+  background: var(--ink);
+}
+
+.btn-look_more_projects::before,
+.btn-describe_more_us::before {
+  background: var(--accent);
+}
+
+.btn-look_more_reviews::before {
+  background: var(--white);
+}
+
+.btn::after,
+.btn-look_more_projects::after,
+.btn-describe_more_us::after,
+.btn-look_more_reviews::after {
+  content: "→";
+  position: absolute;
+  top: 50%;
+  right: 18px;
+  display: grid;
+  width: 28px;
+  height: 28px;
+  place-items: center;
+  font-size: 16px;
+  line-height: 1;
+  transform: translateY(-50%);
+  transition:
+          background 0.35s ease,
+          color 0.35s ease,
+          transform 0.35s ease;
+}
+
+.btn::after {
+  background: var(--white);
+  color: var(--accent);
+}
+
+.btn-look_more_projects::after,
+.btn-describe_more_us::after {
+  background: var(--accent);
+  color: var(--white);
+}
+
+.btn-look_more_reviews::after {
+  width: 26px;
+  height: 26px;
+  background: var(--white);
+  color: var(--accent);
+  font-size: 15px;
+}
+
+.btn:hover,
+.btn-look_more_projects:hover,
+.btn-describe_more_us:hover,
+.btn-look_more_reviews:hover {
+  transform: translateY(-2px);
+}
+
+.btn:hover {
+  border-color: var(--ink);
+  color: var(--white);
+}
+
+.btn-look_more_projects:hover,
+.btn-describe_more_us:hover {
+  border-color: var(--accent);
+  color: var(--white);
+}
+
+.btn-look_more_reviews:hover {
+  border-color: var(--white);
+  color: var(--accent);
+}
+
+.btn:hover::before,
+.btn-look_more_projects:hover::before,
+.btn-describe_more_us:hover::before,
+.btn-look_more_reviews:hover::before {
+  height: 100%;
+}
+
+.btn:hover::after {
+  background: var(--accent);
+  color: var(--ink);
+  transform: translateY(-50%) rotate(-45deg);
+}
+
+.btn-look_more_projects:hover::after,
+.btn-describe_more_us:hover::after {
+  background: var(--ink);
+  transform: translateY(-50%) rotate(-45deg);
+}
+
+.btn-look_more_reviews:hover::after {
+  background: var(--ink);
+  color: var(--white);
+  transform: translateY(-50%) rotate(-45deg);
+}
+
+.btn:focus-visible,
+.btn-look_more_projects:focus-visible,
+.btn-describe_more_us:focus-visible {
+  outline: 2px solid var(--accent-light);
+  outline-offset: 4px;
+}
+
+.btn-look_more_reviews:focus-visible {
+  outline: 2px solid var(--white);
+  outline-offset: 4px;
+}
+
+.btn-look_more_projects span,
+.btn-describe_more_us span,
+.btn-look_more_reviews span {
+  position: relative;
+  z-index: 1;
+}

@@ -1,0 +1,292 @@
+@media (max-width: 860px) {
+  .service-detail {
+    grid-template-columns: 1fr;
+    width: 100%;
+    min-height: auto;
+  }
+
+  .service-detail__image {
+    height: 380px;
+    min-height: 480px;
+  }
+
+  .service-detail__content {
+    min-height: auto;
+    padding: 42px 24px;
+  }
+
+  .service-detail__columns {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .service-detail > :nth-child(1) {
+    order: 1;
+  }
+
+  .service-detail > :nth-child(2) {
+    order: 2;
+  }
+
+  .service-detail > :nth-child(4) {
+    order: 3;
+  }
+
+  .service-detail > :nth-child(3) {
+    order: 4;
+  }
+
+  .service-detail > :nth-child(5) {
+    order: 5;
+  }
+
+  .service-detail > :nth-child(6) {
+    order: 6;
+  }
+
+  .service-detail > :nth-child(8) {
+    order: 7;
+  }
+
+  .service-detail > :nth-child(7) {
+    order: 8;
+  }
+
+  .service-detail > :nth-child(9) {
+    order: 9;
+  }
+
+  .service-detail > :nth-child(10) {
+    order: 10;
+  }
+}
+
+@media (max-width: 520px) {
+  .service-detail__image {
+    height: 220px;
+    min-height: 320px;
+  }
+
+  .service-detail__image-btn {
+    width: 100%;
+    justify-content: center;
+    min-height: 42px;
+    padding: 0 20px;
+  }
+
+  .service-detail__content h2 {
+    font-size: 36px;
+  }
+
+  .service-detail__text {
+    margin: 20px 0 26px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .estimate-info {
+    grid-template-columns: 1fr;
+    gap: 56px;
+  }
+
+  .estimate-info__intro {
+    max-width: 760px;
+  }
+
+  .estimate-info__item {
+    grid-template-columns: 50px minmax(180px, 0.55fr) minmax(220px, 1fr);
+    gap: 28px;
+  }
+
+  .decision-table__row,
+  .decision-table__note {
+    gap: 48px;
+  }
+}
+
+@media (max-width: 860px) {
+  .estimate-info,
+  .decision-guide {
+    padding: 72px 22px;
+  }
+
+  .estimate-info__kicker,
+  .decision-guide__kicker {
+    margin-bottom: 20px;
+    font-size: 9px;
+  }
+
+  .estimate-info__intro h2,
+  .decision-guide__heading h2 {
+    font-size: clamp(38px, 10vw, 58px);
+  }
+
+  .estimate-info__intro p {
+    margin-top: 28px;
+  }
+
+  .estimate-info__item {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    min-height: auto;
+    padding: 30px 0;
+  }
+
+  .estimate-info__item h3 {
+    font-size: 26px;
+  }
+
+  .decision-guide__heading {
+    margin-bottom: 44px;
+  }
+
+  .decision-table {
+    border-top-color: rgba(17, 17, 17, 0.35);
+  }
+
+  .decision-table__row--head {
+    display: none;
+  }
+
+  .decision-table__row {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    min-height: auto;
+    padding: 28px 0;
+  }
+
+  .decision-table__row p {
+    position: relative;
+    padding-left: 0;
+  }
+
+  .decision-table__row p:nth-of-type(1)::before {
+    content: "Repair may make sense";
+    display: block;
+    margin-bottom: 8px;
+    color: #111111;
+    font-size: 9px;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+  }
+
+  .decision-table__row p:nth-of-type(2)::before {
+    content: "Replacement may make sense";
+    display: block;
+    margin-bottom: 8px;
+    color: #111111;
+    font-size: 9px;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+  }
+
+  .decision-table__note {
+    display: block;
+    padding-top: 28px;
+  }
+
+  .decision-table__note p {
+    max-width: 520px;
+  }
+}
+
+@media (max-width: 520px) {
+  .estimate-info,
+  .decision-guide {
+    padding: 58px 18px;
+  }
+
+  .estimate-info__intro h2,
+  .decision-guide__heading h2 {
+    font-size: 40px;
+  }
+
+  .estimate-info__intro p,
+  .estimate-info__item p,
+  .decision-table__row p,
+  .decision-table__note p {
+    font-size: 12px;
+  }
+
+  .estimate-info__item h3 {
+    font-size: 23px;
+  }
+}
+
+@media (max-width: 960px) {
+  .performance-details__inner {
+    padding: 76px 24px;
+  }
+
+  .performance-details__heading {
+    margin-bottom: 56px;
+  }
+
+  .performance-details__heading h2 {
+    font-size: clamp(42px, 9vw, 68px);
+  }
+
+  .performance-details__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .performance-details__item {
+    min-height: auto;
+    padding: 36px 0;
+    border-right: 0;
+  }
+
+  .performance-details__item:nth-child(odd) {
+    padding-left: 0;
+    border-right: 0;
+  }
+
+  .performance-details__item:nth-child(even) {
+    padding-right: 0;
+  }
+
+  .performance-details__number {
+    margin-bottom: 44px;
+  }
+}
+
+@media (max-width: 520px) {
+  .performance-details__inner {
+    padding: 62px 18px;
+  }
+
+  .performance-details__kicker {
+    margin-bottom: 22px;
+    font-size: 9px;
+  }
+
+  .performance-details__heading {
+    margin-bottom: 44px;
+  }
+
+  .performance-details__heading h2 {
+    font-size: 40px;
+  }
+
+  .performance-details__item {
+    padding: 32px 0;
+  }
+
+  .performance-details__number {
+    margin-bottom: 36px;
+    font-size: 9px;
+  }
+
+  .performance-details__item h3 {
+    margin-bottom: 16px;
+    font-size: 25px;
+  }
+
+  .performance-details__item p {
+    font-size: 12px;
+  }
+}

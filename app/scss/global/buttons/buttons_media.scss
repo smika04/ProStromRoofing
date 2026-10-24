@@ -1,0 +1,21 @@
+@media (max-width: 760px) {
+  .btn-look_more_projects,
+  .btn-describe_more_us,
+  .btn-look_more_reviews {
+    width: 100%;
+    min-width: 0;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .btn,
+  .btn-look_more_projects,
+  .btn-describe_more_us,
+  .btn-look_more_reviews {
+    min-height: 48px;
+    padding-right: 52px;
+    padding-left: 18px;
+    font-size: 10px;
+  }
+}

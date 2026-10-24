@@ -1,0 +1,19 @@
+@media (max-width: 760px) {
+  .hero_info {
+    min-height: auto;
+    padding: 120px 22px 72px;
+  }
+
+  .hero_info::before,
+  .hero_info::after {
+    display: none;
+  }
+
+  .hero_info h1 {
+    font-size: clamp(42px, 12vw, 62px);
+  }
+
+  .lead {
+    font-size: 14px;
+  }
+}

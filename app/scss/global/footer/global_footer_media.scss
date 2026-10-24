@@ -1,0 +1,117 @@
+@media (max-width: 1180px) {
+  .footer {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .footer__brand {
+    min-height: 300px;
+    padding: 42px 32px;
+    border-right: 1px solid rgba(255, 255, 255, 0.12);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .footer__links {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: repeat(4, 1fr);
+    min-height: 300px;
+    border-right: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .footer__links a {
+    width: 100%;
+    min-height: 0;
+    padding: 0 22px;
+    border-right: 1px solid rgba(255, 255, 255, 0.12);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    font-size: 9px;
+  }
+
+  .footer__links a:nth-child(2n) {
+    border-right: 0;
+  }
+
+  .footer__links a:nth-last-child(-n + 2) {
+    border-bottom: 0;
+  }
+
+  .footer__map {
+    margin-top: 30px;
+    grid-column: 1 / -1;
+    min-height: 300px;
+    border-top: 0;
+  }
+
+  .footer__map iframe {
+    min-height: 300px;
+  }
+}
+
+@media (max-width: 720px) {
+  .footer {
+    grid-template-columns: 1fr;
+  }
+
+  .footer__brand {
+    min-height: auto;
+    padding: 34px 18px;
+    border-right: 0;
+  }
+
+  .footer__brand .logo {
+    margin-bottom: 20px;
+  }
+
+  .footer__brand p {
+    max-width: 100%;
+    font-size: 13px;
+  }
+
+  .footer__links {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: auto;
+    min-height: auto;
+  }
+
+  .footer__links a {
+    min-height: 48px;
+    padding: 0 16px;
+    font-size: 9px;
+    letter-spacing: 0.08em;
+  }
+
+  .footer__links a:hover {
+    padding-left: 20px;
+  }
+
+  .footer__links a:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .footer__map {
+    display: none;
+  }
+
+  .footer__meta {
+    padding-top: 28px;
+  }
+
+  .footer__meta a {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 420px) {
+  .footer__brand .logo .svg-inject,
+  .footer__brand .logo__img {
+    width: 210px;
+  }
+
+  .footer__links a {
+    min-height: 46px;
+    padding: 0 12px;
+    font-size: 8px;
+    letter-spacing: 0.07em;
+  }
+}

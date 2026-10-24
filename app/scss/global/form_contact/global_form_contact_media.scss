@@ -1,0 +1,203 @@
+@media (max-width: 1180px) {
+  .contact {
+    grid-template-columns: 1fr;
+    gap: 38px;
+    align-items: start;
+  }
+
+  .contact > div:first-child {
+    display: grid;
+    height: auto;
+    gap: 38px;
+  }
+
+  .contact__content {
+    max-width: 760px;
+    padding-bottom: 0;
+  }
+
+  .contact-next,
+  .form {
+    max-width: 860px;
+  }
+
+  .form {
+    height: auto;
+  }
+}
+
+@media (max-width: 760px) {
+  .form {
+    gap: 20px;
+    padding: 28px 22px;
+  }
+
+  .contact-next {
+    gap: 26px;
+    padding: 30px 24px;
+  }
+
+  .contact-next__item {
+    grid-template-columns: 24px minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  .contact-next__item h3 {
+    font-size: 13px;
+  }
+
+  .contact-next__item p {
+    font-size: 12px;
+  }
+
+  .form__row {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .form__photo-item {
+    grid-template-columns: 64px minmax(0, 1fr);
+  }
+
+  .form__photo-preview {
+    width: 64px;
+    height: 54px;
+  }
+
+  .form__photo-remove {
+    grid-column: 1 / -1;
+    width: 100%;
+  }
+
+  .form__photo-add {
+    width: 100%;
+  }
+
+  .form__photo-add span {
+    width: 100%;
+  }
+
+  .form__choices {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 9px;
+  }
+
+  .form__choice {
+    width: 100%;
+  }
+
+  .form__choice span {
+    width: 100%;
+    min-height: 44px;
+    padding: 0 12px;
+    font-size: 10px;
+  }
+
+  .service-dropdown__options {
+    max-height: 230px;
+  }
+
+  .service-dropdown__options button {
+    min-height: 46px;
+    font-size: 11px;
+  }
+
+  .form__submit {
+    width: 100%;
+    justify-content: center;
+    padding-right: 64px;
+    padding-left: 22px;
+  }
+
+  .footer {
+    grid-template-columns: 1fr;
+    gap: 34px;
+    padding: 54px 22px;
+  }
+
+  .footer__meta {
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .phone-link {
+    font-size: 20px;
+  }
+
+  .contact-next {
+    gap: 24px;
+    padding: 28px 20px;
+  }
+
+  .contact-next__list {
+    gap: 22px;
+  }
+
+  .contact-next__call a {
+    font-size: 22px;
+  }
+
+  .form {
+    padding: 24px 18px;
+  }
+
+  .form__choices {
+    grid-template-columns: 1fr;
+  }
+
+  .form__choice span {
+    min-height: 46px;
+    justify-content: center;
+  }
+
+  .form__conditional-field.is-visible,
+  .form__callback.is-visible {
+    max-height: 680px;
+  }
+
+  .form textarea {
+    max-height: 220px;
+  }
+
+  .service-dropdown__button {
+    min-height: 52px;
+    padding-right: 34px;
+  }
+
+  .service-dropdown__options {
+    position: static;
+    width: 100%;
+    max-height: 0;
+    margin-top: 0;
+    padding: 0 8px;
+    overflow: hidden;
+    box-shadow: none;
+    border: 1px solid transparent;
+    transform: none;
+    transition:
+            max-height 0.3s ease,
+            opacity 0.25s ease,
+            visibility 0.25s ease,
+            padding 0.25s ease,
+            border-color 0.25s ease;
+  }
+
+  .service-dropdown.is-open .service-dropdown__options {
+    max-height: 260px;
+    margin-top: 10px;
+    padding: 8px;
+    border-color: #d2d3cf;
+    transform: none;
+  }
+
+  .service-dropdown__options button:hover,
+  .service-dropdown__options button.is-selected {
+    transform: none;
+  }
+
+  .footer {
+    padding: 46px 18px;
+  }
+}

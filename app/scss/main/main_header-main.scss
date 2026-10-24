@@ -387,3 +387,13 @@ h2 em {
   letter-spacing: 0.17em;
   text-transform: uppercase;
 }
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
