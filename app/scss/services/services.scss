@@ -1,3 +1,5 @@
+@use "services_media" as media;
+
 .service-detail {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -411,4 +413,6 @@
   line-height: 1.7;
 }
 
-@use "services_media" as *;
+@mixin styles {
+  @include media.styles();
+}
