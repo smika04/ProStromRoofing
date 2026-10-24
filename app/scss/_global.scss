@@ -6,7 +6,11 @@ html {
   scroll-behavior: smooth;
 }
 
-section[id] {
+//section[id] {
+//  scroll-margin-top: 70px;
+//}
+
+[id] {
   scroll-margin-top: 70px;
 }
 
