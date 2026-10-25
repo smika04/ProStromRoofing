@@ -1,13 +1,24 @@
 @media (max-width: 1180px) {
   .footer {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: minmax(0, 0.82fr) minmax(0, 1fr);
+    padding: 42px clamp(18px, 4vw, 42px);
   }
 
   .footer__brand {
     min-height: 300px;
-    padding: 42px 32px;
+    padding: 34px 28px;
     border-right: 1px solid rgba(255, 255, 255, 0.12);
     border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .footer__brand .logo img,
+  .footer__brand .logo svg {
+    max-width: 215px;
+  }
+
+  .footer__meta {
+    gap: 10px;
+    padding-top: 22px;
   }
 
   .footer__links {
@@ -37,9 +48,10 @@
   }
 
   .footer__map {
-    margin-top: 30px;
     grid-column: 1 / -1;
     min-height: 300px;
+    margin-top: 30px;
+    margin-left: 0;
     border-top: 0;
   }
 
@@ -51,16 +63,22 @@
 @media (max-width: 720px) {
   .footer {
     grid-template-columns: 1fr;
+    padding: 0;
   }
 
   .footer__brand {
     min-height: auto;
-    padding: 34px 18px;
+    padding: 34px 18px 30px;
     border-right: 0;
   }
 
   .footer__brand .logo {
-    margin-bottom: 20px;
+    margin-bottom: 18px;
+  }
+
+  .footer__brand .logo img,
+  .footer__brand .logo svg {
+    max-width: 210px;
   }
 
   .footer__brand p {
@@ -68,10 +86,34 @@
     font-size: 13px;
   }
 
+  .footer__meta {
+    gap: 12px;
+    padding-top: 26px;
+  }
+
+  .footer__meta a.link_address {
+    max-width: 100%;
+    font-size: 12px !important;
+  }
+
+  .social-links a {
+    width: 32px;
+    height: 32px;
+  }
+
+  .footer__contact_directly a {
+    font-size: 14px;
+  }
+
+  .footer__hours > li {
+    font-size: 12px;
+  }
+
   .footer__links {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     grid-template-rows: auto;
     min-height: auto;
+    border-right: 0;
   }
 
   .footer__links a {
@@ -92,20 +134,38 @@
   .footer__map {
     display: none;
   }
-
-  .footer__meta {
-    padding-top: 28px;
-  }
-
-  .footer__meta a {
-    font-size: 20px;
-  }
 }
 
 @media (max-width: 420px) {
+  .footer__brand {
+    padding: 30px 16px 28px;
+  }
+
   .footer__brand .logo .svg-inject,
-  .footer__brand .logo__img {
-    width: 210px;
+  .footer__brand .logo__img,
+  .footer__brand .logo img,
+  .footer__brand .logo svg {
+    width: 200px;
+    max-width: 200px;
+  }
+
+  .footer__meta {
+    gap: 11px;
+  }
+
+  .footer__meta > span,
+  .social-links,
+  .footer__contact_directly,
+  .footer__hours {
+    font-size: 8px;
+  }
+
+  .footer__contact_directly a {
+    font-size: 13px;
+  }
+
+  .footer__hours > li {
+    font-size: 11px;
   }
 
   .footer__links a {
