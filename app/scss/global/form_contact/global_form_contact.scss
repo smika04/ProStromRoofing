@@ -96,10 +96,6 @@
   line-height: 1.2;
 }
 
-.contact-next__call a:hover {
-  color: var(--accent-light);
-}
-
 .phone-link {
   display: inline-block;
   margin-top: 20px;
@@ -267,11 +263,6 @@
           transform 0.25s ease;
 }
 
-.form__choice:hover span {
-  border-color: var(--accent);
-  transform: translateY(-1px);
-}
-
 .form__choice input:checked + span {
   border-color: var(--accent);
   background: var(--accent);
@@ -336,7 +327,6 @@
   transition: transform 0.25s ease;
 }
 
-.service-dropdown__button:hover,
 .service-dropdown__button:focus-visible,
 .service-dropdown.is-open .service-dropdown__button {
   border-color: var(--accent);
@@ -400,7 +390,6 @@
           transform 0.22s ease;
 }
 
-.service-dropdown__options button:hover,
 .service-dropdown__options button.is-selected {
   background: var(--accent);
   color: var(--white);
@@ -475,12 +464,6 @@
           color 0.5s ease;
 }
 
-.form__photo-remove:hover {
-  border-color: var(--accent);
-  background: var(--accent);
-  color: var(--white);
-}
-
 .form__photo-add {
   width: fit-content;
   cursor: pointer;
@@ -515,10 +498,53 @@
           color 0.5s ease;
 }
 
-.form__photo-add:hover span {
-  border-color: var(--accent);
-  background: var(--accent);
-  color: var(--white);
+@media (hover: hover) and (pointer: fine) {
+  .form__photo-add:hover span {
+    border-color: var(--accent);
+    background: var(--accent);
+    color: var(--white);
+  }
+
+  .form__submit:hover {
+    border-color: var(--ink);
+    color: var(--white);
+    transform: translateY(-2px);
+  }
+
+  .form__submit:hover::before {
+    height: 100%;
+  }
+
+  .form__submit:hover::after {
+    background: var(--accent);
+    color: var(--ink);
+    transform: translateY(-50%) rotate(-45deg);
+  }
+
+  .form__photo-remove:hover {
+    border-color: var(--accent);
+    background: var(--accent);
+    color: var(--white);
+  }
+
+  .service-dropdown__options button:hover {
+    background: var(--accent);
+    color: var(--white);
+    transform: translateX(3px);
+  }
+
+  .form__choice:hover span {
+    border-color: var(--accent);
+    transform: translateY(-1px);
+  }
+
+  .service-dropdown__button:hover {
+    border-color: var(--accent);
+  }
+
+  .contact-next__call a:hover {
+    color: var(--accent-light);
+  }
 }
 
 .form__photo-add.is-hidden {
@@ -571,22 +597,6 @@
           background 0.35s ease,
           color 0.35s ease,
           transform 0.35s ease;
-}
-
-.form__submit:hover {
-  border-color: var(--ink);
-  color: var(--white);
-  transform: translateY(-2px);
-}
-
-.form__submit:hover::before {
-  height: 100%;
-}
-
-.form__submit:hover::after {
-  background: var(--accent);
-  color: var(--ink);
-  transform: translateY(-50%) rotate(-45deg);
 }
 
 .form__submit:focus-visible {

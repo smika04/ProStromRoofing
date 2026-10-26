@@ -43,10 +43,6 @@
     border-right: 0;
   }
 
-  .footer__links a:nth-last-child(-n + 2) {
-    border-bottom: 0;
-  }
-
   .footer__map {
     grid-column: 1 / -1;
     min-height: 300px;
@@ -126,11 +122,7 @@
   .footer__links a:hover {
     padding-left: 20px;
   }
-
-  .footer__links a:last-child {
-    grid-column: 1 / -1;
-  }
-
+  
   .footer__map {
     display: none;
   }

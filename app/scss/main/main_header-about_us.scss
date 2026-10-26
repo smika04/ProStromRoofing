@@ -176,12 +176,6 @@
   transition: opacity 0.25s ease, filter 0.25s ease, transform 0.25s ease;
 }
 
-.product-brands img:hover {
-  opacity: 1;
-  filter: grayscale(0);
-  transform: translateY(-2px);
-}
-
 .about-certificates {
   display: flex;
   align-items: center;
@@ -199,12 +193,6 @@
   border: 1px solid rgba(255, 255, 255, 0.14);
   background: rgba(255, 255, 255, 0.04);
   transition: border-color 0.25s ease, background 0.25s ease, transform 0.25s ease;
-}
-
-.about-certificate:hover {
-  border-color: rgba(255, 89, 99, 0.45);
-  background: rgba(255, 255, 255, 0.08);
-  transform: translateY(-2px);
 }
 
 .about-certificate img {
@@ -271,19 +259,33 @@
   z-index: 1;
 }
 
-.btn-describe_more_us:hover {
-  border-color: var(--accent);
-  color: var(--white);
-  transform: translateY(-2px);
-}
+@media (hover: hover) and (pointer: fine) {
+  .btn-describe_more_us:hover {
+    border-color: var(--accent);
+    color: var(--white);
+    transform: translateY(-2px);
+  }
 
-.btn-describe_more_us:hover::before {
-  height: 100%;
-}
+  .product-brands img:hover {
+    opacity: 1;
+    filter: grayscale(0);
+    transform: translateY(-2px);
+  }
 
-.btn-describe_more_us:hover::after {
-  background: var(--ink);
-  transform: translateY(-50%) rotate(-45deg);
+  .btn-describe_more_us:hover::before {
+    height: 100%;
+  }
+
+  .about-certificate:hover {
+    border-color: rgba(255, 89, 99, 0.45);
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateY(-2px);
+  }
+
+  .btn-describe_more_us:hover::after {
+    background: var(--ink);
+    transform: translateY(-50%) rotate(-45deg);
+  }
 }
 
 .btn-describe_more_us:focus-visible {

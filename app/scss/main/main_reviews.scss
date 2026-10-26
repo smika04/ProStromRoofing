@@ -180,20 +180,22 @@
   z-index: 1;
 }
 
-.btn-look_more_reviews:hover {
-  border-color: var(--white);
-  color: var(--accent);
-  transform: translateY(-2px);
-}
+@media (hover: hover) and (pointer: fine){
+  .btn-look_more_reviews:hover {
+    border-color: var(--white);
+    color: var(--accent);
+    transform: translateY(-2px);
+  }
 
-.btn-look_more_reviews:hover::before {
-  height: 100%;
-}
+  .btn-look_more_reviews:hover::before {
+    height: 100%;
+  }
 
-.btn-look_more_reviews:hover::after {
-  background: var(--ink);
-  color: var(--white);
-  transform: translateY(-50%) rotate(-45deg);
+  .btn-look_more_reviews:hover::after {
+    background: var(--ink);
+    color: var(--white);
+    transform: translateY(-50%) rotate(-45deg);
+  }
 }
 
 .btn-look_more_reviews:focus-visible {

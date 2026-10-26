@@ -115,52 +115,54 @@
   font-size: 15px;
 }
 
-.btn:hover,
-.btn-look_more_projects:hover,
-.btn-describe_more_us:hover,
-.btn-look_more_reviews:hover {
-  transform: translateY(-2px);
-}
+@media (hover: hover) and (pointer: fine){
+  .btn:hover,
+  .btn-look_more_projects:hover,
+  .btn-describe_more_us:hover,
+  .btn-look_more_reviews:hover {
+    transform: translateY(-2px);
+  }
 
-.btn:hover {
-  border-color: var(--ink);
-  color: var(--white);
-}
+  .btn:hover {
+    border-color: var(--ink);
+    color: var(--white);
+  }
 
-.btn-look_more_projects:hover,
-.btn-describe_more_us:hover {
-  border-color: var(--accent);
-  color: var(--white);
-}
+  .btn-look_more_projects:hover,
+  .btn-describe_more_us:hover {
+    border-color: var(--accent);
+    color: var(--white);
+  }
 
-.btn-look_more_reviews:hover {
-  border-color: var(--white);
-  color: var(--accent);
-}
+  .btn-look_more_reviews:hover {
+    border-color: var(--white);
+    color: var(--accent);
+  }
 
-.btn:hover::before,
-.btn-look_more_projects:hover::before,
-.btn-describe_more_us:hover::before,
-.btn-look_more_reviews:hover::before {
-  height: 100%;
-}
+  .btn-look_more_projects:hover::after,
+  .btn-describe_more_us:hover::after {
+    background: var(--ink);
+    transform: translateY(-50%) rotate(-45deg);
+  }
 
-.btn:hover::after {
-  background: var(--accent);
-  color: var(--ink);
-  transform: translateY(-50%) rotate(-45deg);
-}
+  .btn-look_more_reviews:hover::after {
+    background: var(--ink);
+    color: var(--white);
+    transform: translateY(-50%) rotate(-45deg);
+  }
 
-.btn-look_more_projects:hover::after,
-.btn-describe_more_us:hover::after {
-  background: var(--ink);
-  transform: translateY(-50%) rotate(-45deg);
-}
+  .btn:hover::before,
+  .btn-look_more_projects:hover::before,
+  .btn-describe_more_us:hover::before,
+  .btn-look_more_reviews:hover::before {
+    height: 100%;
+  }
 
-.btn-look_more_reviews:hover::after {
-  background: var(--ink);
-  color: var(--white);
-  transform: translateY(-50%) rotate(-45deg);
+  .btn:hover::after {
+    background: var(--accent);
+    color: var(--ink);
+    transform: translateY(-50%) rotate(-45deg);
+  }
 }
 
 .btn:focus-visible,

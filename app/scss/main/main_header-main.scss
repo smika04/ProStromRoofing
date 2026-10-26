@@ -255,20 +255,22 @@ h2 em {
           transform 0.35s ease;
 }
 
-.btn:hover {
-  border-color: var(--ink);
-  color: var(--white);
-  transform: translateY(-2px);
-}
+@media (hover: hover) and (pointer: fine) {
+  .btn:hover {
+    border-color: var(--ink);
+    color: var(--white);
+    transform: translateY(-2px);
+  }
 
-.btn:hover::before {
-  height: 100%;
-}
+  .btn:hover::before {
+    height: 100%;
+  }
 
-.btn:hover::after {
-  background: var(--accent);
-  color: var(--ink);
-  transform: translateY(-50%) rotate(-45deg);
+  .btn:hover::after {
+    background: var(--accent);
+    color: var(--ink);
+    transform: translateY(-50%) rotate(-45deg);
+  }
 }
 
 .btn:focus-visible {
