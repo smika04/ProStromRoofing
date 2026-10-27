@@ -3,7 +3,8 @@ import { initLogoScroll } from './global/logo_scroll.js';
 import { initMenuHandleScroll } from './global/menu_hangle_scroll.js';
 import { initContactForm } from './global/contact.js';
 import { initSvgInject } from './global/svg-inject.js';
-import {getYearsCompany} from "./global/getYearsCompany";
+import { getYearsCompany } from "./global/getYearsCompany";
+import { getCompanyContacts } from "./global/getCompanyContacts";
 
 $(function () {
     function runMainScripts() {
@@ -12,6 +13,7 @@ $(function () {
         initLogoScroll();
         initContactForm();
         getYearsCompany();
+        getCompanyContacts();
 
         if (typeof window.mainPageScript === 'function') {
             window.mainPageScript();

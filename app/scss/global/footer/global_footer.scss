@@ -73,6 +73,18 @@
   list-style: none;
 }
 
+.footer__meta ul,
+.footer__meta ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.footer__meta li {
+  margin: 0;
+  padding: 0;
+}
+
 .footer__meta a {
   width: fit-content;
   color: var(--white);
@@ -81,6 +93,39 @@
   line-height: 1.1;
   letter-spacing: -0.04em;
   transition: color 0.25s ease;
+}
+
+.footer__addresses {
+  display: grid;
+  gap: 6px;
+  max-width: 280px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.footer__addresses li {
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+.footer__addresses a {
+  display: inline-block;
+  max-width: 280px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  line-height: 1.45 !important;
+  letter-spacing: 0;
+  text-decoration: underline;
+  text-decoration-color: rgba(255, 255, 255, 0.28);
+  text-underline-offset: 4px;
+  text-transform: none;
+  white-space: normal;
+  transition:
+          color 0.25s ease,
+          text-decoration-color 0.25s ease;
 }
 
 .footer__meta a.link_address {
@@ -101,7 +146,8 @@
           text-decoration-color 0.25s ease;
 }
 
-@media (hover: hover) and (pointer: fine){
+@media (hover: hover) and (pointer: fine) {
+  .footer__addresses a:hover,
   .footer__meta a.link_address:hover {
     color: var(--white);
     text-decoration-color: #e53935;
@@ -117,9 +163,6 @@
   .footer__links a:hover {
     background: rgba(255, 255, 255, 0.04);
     color: var(--white);
-  }
-
-  .footer__links a:hover {
     padding-left: clamp(24px, 3vw, 44px);
   }
 
@@ -173,8 +216,32 @@
   padding-top: 4px;
 }
 
+.footer__contact_directly > span {
+  display: block;
+  color: rgba(255, 255, 255, 0.42);
+  font-size: 9px;
+  font-weight: 900;
+  line-height: 1.25;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.footer__contact_directly ul {
+  display: grid;
+  gap: 5px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.footer__contact_directly ul:empty {
+  display: none;
+}
+
 .footer__contact_directly li {
   display: block;
+  margin: 0;
+  padding: 0;
 }
 
 .footer__contact_directly a {
@@ -183,6 +250,15 @@
   font-weight: 650;
   line-height: 1.25;
   letter-spacing: -0.02em;
+  text-transform: none;
+}
+
+.footer__contact_directly [data-company-faxes] li {
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.35;
+  letter-spacing: 0;
   text-transform: none;
 }
 
@@ -209,6 +285,10 @@
   min-height: 320px;
   align-content: stretch;
   border-right: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.footer__contact_directly_ul {
+  margin-bottom: 5px!important;
 }
 
 .footer__links a {
@@ -249,7 +329,7 @@
 }
 
 .footer__map::before {
-  content: "Our office";
+  content: "Our main office";
   position: absolute;
   top: 14px;
   right: 14px;

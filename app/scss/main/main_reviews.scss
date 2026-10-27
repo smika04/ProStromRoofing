@@ -7,13 +7,102 @@
   text-align: center;
 }
 
+.review_slider_main_item blockquote,
+.review_slider_main_item .testimonial-rating,
+.review_slider_main_item p {
+  opacity: 0;
+  filter: blur(12px);
+  transform: translateY(26px) scale(0.98);
+  transition:
+          opacity 0.72s ease,
+          filter 0.72s ease,
+          transform 0.72s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, filter, transform;
+}
+
+.slick-current .review_slider_main_item blockquote {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateY(0) scale(1);
+  transition-delay: 0.08s;
+}
+
+.slick-current .review_slider_main_item .testimonial-rating {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateY(0) scale(1);
+  transition-delay: 0.18s;
+}
+
+.slick-current .review_slider_main_item p {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateY(0) scale(1);
+  transition-delay: 0.28s;
+}
+
+.review_slider:not(.slick-initialized) .review_slider_main_item:first-child blockquote,
+.review_slider:not(.slick-initialized) .review_slider_main_item:first-child .testimonial-rating,
+.review_slider:not(.slick-initialized) .review_slider_main_item:first-child p {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateY(0) scale(1);
+}
+
+.testimonial-rating span {
+  display: inline-block;
+}
+
+.testimonial blockquote {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto 18px;
+  font: 600 clamp(20px, 2.15vw, 34px) / 1.26 "Manrope", sans-serif;
+  letter-spacing: -0.035em;
+}
+
+.testimonial-rating {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin: 0 0 14px;
+  color: #ffd36a;
+  font-size: clamp(16px, 1.55vw, 22px);
+  line-height: 1;
+  letter-spacing: 0.07em;
+  text-shadow: 0 8px 24px rgba(13, 13, 14, 0.16);
+}
+
 .review_slider {
   width: 100%;
   max-width: min(1280px, 100%);
+  min-height: clamp(250px, 26vw, 360px);
   margin: 0 auto;
   cursor: grab;
   user-select: none;
   touch-action: pan-y;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition:
+          opacity 0.45s ease,
+          visibility 0.45s ease,
+          transform 0.45s ease;
+}
+
+.review_slider--ready {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.review_slider:not(.review_slider--ready) {
+  pointer-events: none;
+}
+
+.review_slider:not(.slick-initialized) .review_slider_main_item:not(:first-child) {
+  display: none;
 }
 
 .review_slider:active {
@@ -44,31 +133,6 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-}
-
-.testimonial blockquote {
-  width: 100%;
-  max-width: 1180px;
-  margin: 0 auto 18px;
-  font: 600 clamp(20px, 2.15vw, 34px) / 1.26 "Manrope", sans-serif;
-  letter-spacing: -0.035em;
-}
-
-.testimonial-rating {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  margin: 0 0 14px;
-  color: #ffd36a;
-  font-size: clamp(16px, 1.55vw, 22px);
-  line-height: 1;
-  letter-spacing: 0.07em;
-  text-shadow: 0 8px 24px rgba(13, 13, 14, 0.16);
-}
-
-.testimonial-rating span {
-  display: inline-block;
 }
 
 .testimonial p {
@@ -180,7 +244,7 @@
   z-index: 1;
 }
 
-@media (hover: hover) and (pointer: fine){
+@media (hover: hover) and (pointer: fine) {
   .btn-look_more_reviews:hover {
     border-color: var(--white);
     color: var(--accent);

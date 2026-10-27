@@ -1,0 +1,17 @@
+{
+  "fax_numbers": [],
+  "phone_numbers": [
+    "(604) 799-4080"
+  ],
+  "emails": [
+    "info@stormproroofing.ca",
+    "contact@stormproroofing.ca",
+    "careers@stormproroofing.ca"
+  ],
+  "address_office": [
+    {
+      "address": "5480 Pebble Ln, Chilliwack, BC V2R 6B8",
+      "map_url": "https://www.google.com/maps/place/Storm+Pro+Roofing/@49.1023074,-121.9937017,17z/data=!3m1!4b1!4m6!3m5!1s0x52eb00928aad4ca7:0x6f7748ea411ca1a2!8m2!3d49.1023074!4d-121.9937017!16s%2Fg%2F11gg18vqvl?entry=ttu&g_ep=EgoyMDI2MTAyMC4wIKXMDSoASAFQAw%3D%3D=embed"
+    }
+  ]
+}

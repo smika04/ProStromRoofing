@@ -26,7 +26,7 @@
   z-index: -1;
   height: 0;
   background: var(--ink);
-  transition: height 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: height 0.65s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .service-card:last-child {
@@ -146,6 +146,7 @@
   justify-content: space-between;
   gap: 18px;
   width: 100%;
+  margin-top: 10px;
 }
 
 .service-title > h3 {

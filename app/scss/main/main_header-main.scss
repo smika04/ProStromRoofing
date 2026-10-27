@@ -355,14 +355,17 @@ h2 em {
   &__track {
     display: flex;
     width: max-content;
-    animation: marquee 58s linear infinite;
+    min-width: 200%;
+    animation: marquee 110s linear infinite;
     will-change: transform;
   }
 
   &__group {
     display: flex;
-    flex-shrink: 0;
+    flex: 0 0 auto;
+    min-width: 100vw;
     align-items: center;
+    justify-content: space-around;
     gap: 44px;
     padding-right: 44px;
 
@@ -392,10 +395,10 @@ h2 em {
 
 @keyframes marquee {
   from {
-    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
   }
 
   to {
-    transform: translateX(-50%);
+    transform: translate3d(-50%, 0, 0);
   }
 }
