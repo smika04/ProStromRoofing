@@ -1,4 +1,4 @@
-const CONTACTS_JSON_PATH = "/json/company_contacts.json";
+const CONTACTS_JSON_PATH = `${__BASE_HREF__}json/company_contacts.json`;
 
 const CONTACT_SELECTORS = {
     phone_numbers: "[data-company-phones]",

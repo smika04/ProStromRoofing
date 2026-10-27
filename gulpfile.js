@@ -187,7 +187,10 @@ gulp.task('script', function () {
             bundle: true,
             format: 'iife',
             sourcemap: true,
-            target: ['es2018']
+            target: ['es2018'],
+            define: {
+                __BASE_HREF__: JSON.stringify(baseHref)
+            }
         }))
         .pipe(gulp.dest('.tmp/js'))
         .pipe(browserSync.reload({ stream: true }));
