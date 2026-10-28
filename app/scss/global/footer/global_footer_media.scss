@@ -68,7 +68,7 @@
 
   .footer__brand {
     min-height: auto;
-    padding: 34px 18px 30px;
+    padding: 0 18px 30px;
     border-right: 0;
   }
 
@@ -140,7 +140,7 @@
 
 @media (max-width: 420px) {
   .footer__brand {
-    padding: 30px 16px 28px;
+    padding: 0 16px 28px;
   }
 
   .footer__brand .logo .svg-inject,

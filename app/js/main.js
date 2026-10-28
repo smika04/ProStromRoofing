@@ -22,6 +22,10 @@ $(function () {
         if (typeof window.careersPageScript === 'function') {
             window.careersPageScript();
         }
+
+        if (typeof window.ourProjectsPageScript === 'function') {
+            window.ourProjectsPageScript();
+        }
     }
 
     initSvgInject(runMainScripts);

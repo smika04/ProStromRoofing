@@ -17,6 +17,65 @@
 @@include('components/our_projects/projects_nav-top.html')
 @@include('components/our_projects/projects_header-main.html')
 
+<section class="projects-page" data-projects-page>
+    <div class="projects-page__filters" data-project-filters>
+        <button class="is-active" type="button" data-filter="all">All</button>
+        <button type="button" data-filter="replacement">Replacement</button>
+        <button type="button" data-filter="repair">Repair</button>
+        <button type="button" data-filter="maintance">Maintenance</button>
+    </div>
+
+    <div class="projects-grid" data-projects-grid></div>
+
+    <div class="projects-page__actions">
+        <button class="projects-load-more" type="button" data-projects-load-more>
+            Load more projects
+        </button>
+    </div>
+</section>
+
+<div class="project-detail" data-project-detail hidden>
+    <button class="project-detail__back" type="button" data-project-detail-back>
+        ← All projects
+    </button>
+
+    <section class="project-detail__hero">
+        <img data-project-detail-main-image src="" alt="">
+
+        <div class="project-detail__overlay"></div>
+
+        <div class="project-detail__content">
+            <span data-project-detail-meta></span>
+            <h1 data-project-detail-title></h1>
+            <p data-project-detail-description></p>
+        </div>
+
+        <div class="project-detail__badge">
+            <span data-project-detail-number></span>
+        </div>
+    </section>
+
+    <section class="project-detail__body">
+        <div class="project-detail__info">
+            <div>
+                <span>Service</span>
+                <strong data-project-detail-service></strong>
+            </div>
+
+            <div>
+                <span>Location</span>
+                <strong data-project-detail-city></strong>
+            </div>
+        </div>
+
+        <div class="project-detail__materials" data-project-detail-materials></div>
+
+        <div class="project-detail__gallery-wrap">
+            <div class="project-detail__gallery" data-project-detail-gallery></div>
+        </div>
+    </section>
+</div>
+
 @@include('components/our_projects/projects_footer-contact.html')
 
 @@include('components/our_projects/projects_nav-bottom.html')
@@ -26,8 +85,9 @@
     <span>Built with integrity</span>
 </div>
 
-<!--<script src="../js/about-page_script.js"></script>-->
+
 <script src="../js/libs.min.js"></script>
+<script src="../js/our_projects/our_projects-page_script.js"></script>
 <script src="../js/main.js"></script>
 </body>
 </html>
