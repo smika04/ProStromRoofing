@@ -24,6 +24,7 @@
   color: var(--ink);
 }
 
+
 .logo {
   position: relative;
   display: inline-flex;
@@ -41,6 +42,10 @@
   height: 1px;
   background: var(--ink);
   transition: right 0.25s ease;
+}
+
+.logo:hover{
+  cursor: pointer;
 }
 
 .logo:hover::after {

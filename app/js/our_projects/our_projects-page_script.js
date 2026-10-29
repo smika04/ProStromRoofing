@@ -2,9 +2,11 @@ window.ourProjectsPageScript = function () {
     const PROJECTS_JSON_PATH = "../json/projects.json";
     const PROJECTS_IMAGE_BASE_PATH = "../images/projects/";
     const PROJECTS_PER_PAGE = 4;
+    const PAGE_ANIMATION_DURATION = 360;
 
     const page = document.querySelector("[data-projects-page]");
     const detail = document.querySelector("[data-project-detail]");
+    const projectView = document.querySelector(".project_view");
 
     if (!page || !detail || page.dataset.projectsInitialized === "true") {
         return;
@@ -16,6 +18,23 @@ window.ourProjectsPageScript = function () {
     let filteredProjects = [];
     let currentFilter = "all";
     let visibleCount = PROJECTS_PER_PAGE;
+
+    function initProjectViewObserver() {
+        if (!projectView || !("IntersectionObserver" in window)) {
+            document.body.classList.add("project-view-visible");
+            return;
+        }
+
+        const observer = new IntersectionObserver(function (entries) {
+            entries.forEach(entry => {
+                document.body.classList.toggle("project-view-visible", entry.isIntersecting);
+            });
+        }, {
+            threshold: 0.08
+        });
+
+        observer.observe(projectView);
+    }
 
     function normalizeText(value) {
         return String(value || "").replace(/\s+/g, " ").trim();
@@ -94,6 +113,186 @@ window.ourProjectsPageScript = function () {
         return index >= 0 ? index : 0;
     }
 
+    function restartAnimation(element, animationClass) {
+        if (!element) {
+            return;
+        }
+
+        element.classList.remove(animationClass);
+
+        requestAnimationFrame(function () {
+            element.classList.add(animationClass);
+        });
+    }
+
+    function switchSections(sectionToHide, sectionToShow) {
+        sectionToHide.classList.remove("is-entering");
+        sectionToHide.classList.add("is-leaving");
+
+        window.setTimeout(function () {
+            sectionToHide.hidden = true;
+            sectionToHide.classList.remove("is-leaving");
+
+            sectionToShow.hidden = false;
+            restartAnimation(sectionToShow, "is-entering");
+
+            window.setTimeout(function () {
+                sectionToShow.classList.remove("is-entering");
+            }, PAGE_ANIMATION_DURATION + 220);
+        }, PAGE_ANIMATION_DURATION);
+    }
+
+    function blurFocusedElementInside(element) {
+        if (!element || !document.activeElement) {
+            return;
+        }
+
+        if (element.contains(document.activeElement) && typeof document.activeElement.blur === "function") {
+            document.activeElement.blur();
+        }
+    }
+
+    function getCurrentGalleryActivePath(gallery) {
+        if (!gallery) {
+            return "";
+        }
+
+        return gallery.dataset.activeImagePath || "";
+    }
+
+    function setActiveGalleryItem(gallery, activeImagePath) {
+        if (!gallery || !activeImagePath) {
+            return;
+        }
+
+        gallery.dataset.activeImagePath = activeImagePath;
+
+        gallery.querySelectorAll(".project-detail__gallery-item").forEach(item => {
+            item.classList.toggle("is-active", item.dataset.imagePath === activeImagePath);
+        });
+    }
+
+    function syncGalleryAccessibility(gallery) {
+        if (!gallery) {
+            return;
+        }
+
+        const activeImagePath = getCurrentGalleryActivePath(gallery);
+
+        gallery.querySelectorAll(".slick-slide").forEach(slide => {
+            const isHidden = slide.getAttribute("aria-hidden") === "true";
+
+            if (isHidden && slide.contains(document.activeElement)) {
+                blurFocusedElementInside(slide);
+            }
+
+            slide.querySelectorAll("button, a, input, select, textarea, [tabindex]").forEach(element => {
+                if (isHidden) {
+                    element.setAttribute("tabindex", "-1");
+                } else if (element.classList.contains("project-detail__gallery-item")) {
+                    element.setAttribute("tabindex", "0");
+                } else {
+                    element.removeAttribute("tabindex");
+                }
+            });
+        });
+
+        gallery.querySelectorAll(".project-detail__gallery-item").forEach(item => {
+            item.classList.toggle("is-active", item.dataset.imagePath === activeImagePath);
+        });
+    }
+
+    function safeSyncGallery(gallery) {
+        if (!gallery) {
+            return;
+        }
+
+        window.requestAnimationFrame(function () {
+            syncGalleryAccessibility(gallery);
+
+            window.setTimeout(function () {
+                syncGalleryAccessibility(gallery);
+            }, 0);
+        });
+    }
+
+    function preloadGalleryImages(gallery) {
+        if (!gallery) {
+            return Promise.resolve();
+        }
+
+        const images = Array.from(gallery.querySelectorAll("img"));
+
+        if (!images.length) {
+            return Promise.resolve();
+        }
+
+        return Promise.allSettled(images.map(image => {
+            if (image.complete) {
+                return Promise.resolve();
+            }
+
+            return new Promise(resolve => {
+                image.addEventListener("load", resolve, {
+                    once: true
+                });
+
+                image.addEventListener("error", resolve, {
+                    once: true
+                });
+            });
+        }));
+    }
+
+    function refreshGallerySlider(gallery) {
+        if (!gallery || !window.$ || !$.fn.slick) {
+            return;
+        }
+
+        if ($(gallery).hasClass("slick-initialized")) {
+            $(gallery).slick("setPosition");
+            safeSyncGallery(gallery);
+            setActiveGalleryItem(gallery, getCurrentGalleryActivePath(gallery));
+        }
+    }
+
+    function updateMainImage(imagePath, altText) {
+        const mainImage = document.querySelector("[data-project-detail-main-image]");
+        const gallery = document.querySelector("[data-project-detail-gallery]");
+
+        if (!mainImage || !imagePath) {
+            return;
+        }
+
+        if (gallery) {
+            gallery.dataset.activeImagePath = imagePath;
+            setActiveGalleryItem(gallery, imagePath);
+            safeSyncGallery(gallery);
+        }
+
+        if (mainImage.src.includes(imagePath)) {
+            return;
+        }
+
+        mainImage.classList.add("is-changing");
+
+        window.setTimeout(function () {
+            mainImage.classList.add("is-gallery-image");
+            mainImage.src = imagePath;
+            mainImage.alt = altText || mainImage.alt || "Project photo";
+
+            if (gallery) {
+                gallery.dataset.activeImagePath = imagePath;
+                setActiveGalleryItem(gallery, imagePath);
+                safeSyncGallery(gallery);
+            }
+
+            window.setTimeout(function () {
+                mainImage.classList.remove("is-changing");
+            }, 80);
+        }, 180);
+    }
+
     function createProjectCard(project) {
         const globalIndex = getProjectGlobalIndex(project);
         const card = document.createElement("article");
@@ -160,49 +359,130 @@ window.ourProjectsPageScript = function () {
     }
 
     function destroyGallerySlider(gallery) {
-        if (window.$ && $.fn.slick && $(gallery).hasClass("slick-initialized")) {
-            $(gallery).slick("unslick");
+        if (!gallery) {
+            return;
         }
+
+        blurFocusedElementInside(gallery);
+
+        if (window.$ && $.fn.slick) {
+            $(gallery).off(".projectsGallery");
+
+            if ($(gallery).hasClass("slick-initialized")) {
+                $(gallery).slick("unslick");
+            }
+        }
+
+        gallery.classList.remove("is-loading", "is-loaded");
+
+        gallery.querySelectorAll(".project-detail__gallery-item").forEach(item => {
+            item.removeAttribute("tabindex");
+            item.removeAttribute("aria-hidden");
+        });
     }
 
-    function initGallerySlider(gallery) {
+    function initGallerySlider(gallery, activeImagePath) {
+        if (!gallery) {
+            return;
+        }
+
+        gallery.dataset.activeImagePath = activeImagePath;
+
         if (!window.$ || !$.fn.slick) {
+            gallery.classList.remove("is-loading");
+            gallery.classList.add("is-loaded");
+            setActiveGalleryItem(gallery, activeImagePath);
             return;
         }
 
         destroyGallerySlider(gallery);
+
+        gallery.dataset.activeImagePath = activeImagePath;
+
+        $(gallery)
+            .off(".projectsGallery")
+            .on("init.projectsGallery", function () {
+                safeSyncGallery(gallery);
+                setActiveGalleryItem(gallery, getCurrentGalleryActivePath(gallery));
+            })
+            .on("beforeChange.projectsGallery", function () {
+                blurFocusedElementInside(gallery);
+                syncGalleryAccessibility(gallery);
+            })
+            .on("afterChange.projectsGallery", function () {
+                safeSyncGallery(gallery);
+                setActiveGalleryItem(gallery, getCurrentGalleryActivePath(gallery));
+            })
+            .on("setPosition.projectsGallery", function () {
+                safeSyncGallery(gallery);
+                setActiveGalleryItem(gallery, getCurrentGalleryActivePath(gallery));
+            });
 
         $(gallery).slick({
             slidesToShow: 5,
             slidesToScroll: 1,
             infinite: false,
             arrows: true,
-            dots: false,
+            dots: true,
             draggable: true,
             swipe: true,
             touchMove: true,
-            speed: 360,
-            cssEase: "ease",
+            speed: 420,
+            pauseOnHover: true,
+            pauseOnFocus: true,
+            cssEase: "cubic-bezier(0.22, 1, 0.36, 1)",
+            accessibility: false,
+            focusOnChange: false,
+            focusOnSelect: false,
             responsive: [
                 {
                     breakpoint: 1440,
                     settings: {
-                        slidesToShow: 4
+                        slidesToShow: 4,
+                        infinite: false
                     }
                 },
                 {
                     breakpoint: 1024,
                     settings: {
-                        slidesToShow: 3
+                        slidesToShow: 3,
+                        infinite: false
                     }
                 },
                 {
                     breakpoint: 640,
                     settings: {
-                        slidesToShow: 1
+                        slidesToShow: 1,
+                        infinite: false
                     }
                 }
             ]
+        });
+
+        safeSyncGallery(gallery);
+        setActiveGalleryItem(gallery, getCurrentGalleryActivePath(gallery));
+    }
+
+    function prepareGallerySlider(gallery, activeImagePath) {
+        if (!gallery) {
+            return;
+        }
+
+        gallery.classList.add("is-loading");
+        gallery.classList.remove("is-loaded");
+
+        preloadGalleryImages(gallery).finally(function () {
+            initGallerySlider(gallery, activeImagePath);
+
+            window.requestAnimationFrame(function () {
+                refreshGallerySlider(gallery);
+
+                window.setTimeout(function () {
+                    refreshGallerySlider(gallery);
+                    gallery.classList.remove("is-loading");
+                    gallery.classList.add("is-loaded");
+                }, 120);
+            });
         });
     }
 
@@ -245,9 +525,10 @@ window.ourProjectsPageScript = function () {
         });
     }
 
-    function renderGallery(project) {
+    function renderGallery(project, shouldInitSlider = true) {
         const gallery = document.querySelector("[data-project-detail-gallery]");
-        const mainImage = document.querySelector("[data-project-detail-main-image]");
+        const title = getProjectTitle(project);
+        const activeImagePath = getProjectImagePath(project.main_photo_path);
 
         if (!gallery) {
             return;
@@ -256,6 +537,9 @@ window.ourProjectsPageScript = function () {
         destroyGallerySlider(gallery);
 
         gallery.innerHTML = "";
+        gallery.dataset.activeImagePath = activeImagePath;
+        gallery.classList.remove("is-loaded");
+        gallery.classList.add("is-loading");
 
         getProjectPhotos(project).forEach((photo, index) => {
             const imagePath = getProjectImagePath(photo);
@@ -263,18 +547,41 @@ window.ourProjectsPageScript = function () {
 
             slide.className = "project-detail__gallery-item";
             slide.type = "button";
-            slide.innerHTML = `<img src="${imagePath}" alt="Project photo ${index + 1}" loading="lazy">`;
+            slide.dataset.imagePath = imagePath;
+            slide.setAttribute("aria-label", `Show project photo ${index + 1}`);
+
+            slide.innerHTML = `
+                <img src="${imagePath}" alt="${title} photo ${index + 1}" loading="eager" decoding="async">
+            `;
+
+            slide.addEventListener("mousedown", function () {
+                gallery.dataset.activeImagePath = imagePath;
+                setActiveGalleryItem(gallery, imagePath);
+            });
+
+            slide.addEventListener("touchstart", function () {
+                gallery.dataset.activeImagePath = imagePath;
+                setActiveGalleryItem(gallery, imagePath);
+            }, {
+                passive: true
+            });
 
             slide.addEventListener("click", function () {
-                if (mainImage) {
-                    mainImage.src = imagePath;
-                }
+                gallery.dataset.activeImagePath = imagePath;
+                updateMainImage(imagePath, `${title} photo ${index + 1}`);
+                setActiveGalleryItem(gallery, imagePath);
+                blurFocusedElementInside(gallery);
+                safeSyncGallery(gallery);
             });
 
             gallery.append(slide);
         });
 
-        initGallerySlider(gallery);
+        setActiveGalleryItem(gallery, activeImagePath);
+
+        if (shouldInitSlider) {
+            prepareGallerySlider(gallery, activeImagePath);
+        }
     }
 
     function updateUrl(project) {
@@ -306,8 +613,12 @@ window.ourProjectsPageScript = function () {
         const detailNumber = document.querySelector("[data-project-detail-number]");
         const detailService = document.querySelector("[data-project-detail-service]");
         const detailCity = document.querySelector("[data-project-detail-city]");
+        const gallery = document.querySelector("[data-project-detail-gallery]");
+
+        document.body.classList.remove("project-back-ready");
 
         if (detailMainImage) {
+            detailMainImage.classList.remove("is-changing", "is-gallery-image");
             detailMainImage.src = mainImage;
             detailMainImage.alt = title;
         }
@@ -338,16 +649,25 @@ window.ourProjectsPageScript = function () {
         }
 
         renderMaterials(project);
-        renderGallery(project);
-
-        page.hidden = true;
-        detail.hidden = false;
+        renderGallery(project, false);
 
         document.body.classList.add("project-detail-open");
 
         if (shouldUpdateUrl) {
             updateUrl(project);
         }
+
+        switchSections(page, detail);
+
+        window.setTimeout(function () {
+            if (gallery) {
+                prepareGallerySlider(gallery, mainImage);
+            }
+        }, PAGE_ANIMATION_DURATION + 80);
+
+        window.setTimeout(function () {
+            document.body.classList.add("project-back-ready");
+        }, PAGE_ANIMATION_DURATION + 220);
 
         window.scrollTo({
             top: 0,
@@ -362,14 +682,16 @@ window.ourProjectsPageScript = function () {
             destroyGallerySlider(gallery);
         }
 
-        detail.hidden = true;
-        page.hidden = false;
+        blurFocusedElementInside(detail);
 
+        document.body.classList.remove("project-back-ready");
         document.body.classList.remove("project-detail-open");
 
         if (shouldUpdateUrl) {
             clearProjectUrl();
         }
+
+        switchSections(detail, page);
 
         window.scrollTo({
             top: 0,
@@ -444,6 +766,7 @@ window.ourProjectsPageScript = function () {
             allProjects = await response.json();
             filteredProjects = [...allProjects];
 
+            initProjectViewObserver();
             bindEvents();
             renderProjects();
             openProjectFromUrl();
