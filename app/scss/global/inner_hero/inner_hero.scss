@@ -2,7 +2,7 @@
   position: relative;
   overflow: hidden;
   min-height: 435px;
-  padding: 92px 0 60px clamp(24px, 9vw, 104px);
+  padding: 92px clamp(24px, 9vw, 104px) 60px;
   background: var(--white);
   color: var(--ink);
 }
