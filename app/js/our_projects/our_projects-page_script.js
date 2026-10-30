@@ -3,6 +3,7 @@ window.ourProjectsPageScript = function () {
     const PROJECTS_IMAGE_BASE_PATH = "../images/projects/";
     const PROJECTS_PER_PAGE = 4;
     const PAGE_ANIMATION_DURATION = 360;
+    const HEADER_SCROLL_OFFSET = 76;
 
     const page = document.querySelector("[data-projects-page]");
     const detail = document.querySelector("[data-project-detail]");
@@ -12,12 +13,18 @@ window.ourProjectsPageScript = function () {
         return;
     }
 
+    if ("scrollRestoration" in window.history) {
+        window.history.scrollRestoration = "manual";
+    }
+
     page.dataset.projectsInitialized = "true";
 
     let allProjects = [];
     let filteredProjects = [];
     let currentFilter = "all";
     let visibleCount = PROJECTS_PER_PAGE;
+    let projectsPageScrollY = 0;
+    let isSwitchingSections = false;
 
     function initProjectViewObserver() {
         if (!projectView || !("IntersectionObserver" in window)) {
@@ -113,6 +120,27 @@ window.ourProjectsPageScript = function () {
         return index >= 0 ? index : 0;
     }
 
+    function scrollToPosition(top, behavior = "smooth") {
+        window.requestAnimationFrame(function () {
+            window.scrollTo({
+                top,
+                behavior
+            });
+        });
+    }
+
+    function getProjectViewTop() {
+        if (!projectView) {
+            return 0;
+        }
+
+        return Math.max(projectView.getBoundingClientRect().top + window.scrollY - HEADER_SCROLL_OFFSET, 0);
+    }
+
+    function scrollToProjectViewTop(behavior = "smooth") {
+        scrollToPosition(getProjectViewTop(), behavior);
+    }
+
     function restartAnimation(element, animationClass) {
         if (!element) {
             return;
@@ -125,7 +153,23 @@ window.ourProjectsPageScript = function () {
         });
     }
 
-    function switchSections(sectionToHide, sectionToShow) {
+    function switchSections(sectionToHide, sectionToShow, onComplete) {
+        if (isSwitchingSections) {
+            sectionToHide.hidden = true;
+            sectionToHide.classList.remove("is-entering", "is-leaving");
+
+            sectionToShow.hidden = false;
+            sectionToShow.classList.remove("is-entering", "is-leaving");
+
+            if (typeof onComplete === "function") {
+                onComplete();
+            }
+
+            return;
+        }
+
+        isSwitchingSections = true;
+
         sectionToHide.classList.remove("is-entering");
         sectionToHide.classList.add("is-leaving");
 
@@ -138,6 +182,11 @@ window.ourProjectsPageScript = function () {
 
             window.setTimeout(function () {
                 sectionToShow.classList.remove("is-entering");
+                isSwitchingSections = false;
+
+                if (typeof onComplete === "function") {
+                    onComplete();
+                }
             }, PAGE_ANIMATION_DURATION + 220);
         }, PAGE_ANIMATION_DURATION);
     }
@@ -588,17 +637,28 @@ window.ourProjectsPageScript = function () {
         const url = new URL(window.location.href);
 
         url.searchParams.set("project", project.id);
+        url.hash = "";
         window.history.pushState({ projectId: project.id }, "", url.toString());
     }
 
-    function clearProjectUrl() {
+    function clearProjectUrl(replace = false) {
         const url = new URL(window.location.href);
 
         url.searchParams.delete("project");
+
+        if (replace) {
+            window.history.replaceState({}, "", url.toString());
+            return;
+        }
+
         window.history.pushState({}, "", url.toString());
     }
 
-    function openProjectDetail(project, shouldUpdateUrl = true) {
+    function openProjectDetail(project, shouldUpdateUrl = true, shouldSaveScroll = true) {
+        if (shouldSaveScroll && detail.hidden) {
+            projectsPageScrollY = window.scrollY;
+        }
+
         const globalIndex = getProjectGlobalIndex(project);
         const title = getProjectTitle(project);
         const service = formatServiceName(project.service_type);
@@ -657,25 +717,18 @@ window.ourProjectsPageScript = function () {
             updateUrl(project);
         }
 
-        switchSections(page, detail);
-
-        window.setTimeout(function () {
+        switchSections(page, detail, function () {
             if (gallery) {
                 prepareGallerySlider(gallery, mainImage);
             }
-        }, PAGE_ANIMATION_DURATION + 80);
 
-        window.setTimeout(function () {
             document.body.classList.add("project-back-ready");
-        }, PAGE_ANIMATION_DURATION + 220);
-
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
         });
+
+        scrollToProjectViewTop();
     }
 
-    function closeProjectDetail(shouldUpdateUrl = true) {
+    function closeProjectDetail(shouldUpdateUrl = true, shouldRestoreScroll = true) {
         const gallery = document.querySelector("[data-project-detail-gallery]");
 
         if (gallery) {
@@ -691,11 +744,10 @@ window.ourProjectsPageScript = function () {
             clearProjectUrl();
         }
 
-        switchSections(detail, page);
-
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
+        switchSections(detail, page, function () {
+            if (shouldRestoreScroll) {
+                scrollToPosition(projectsPageScrollY, "auto");
+            }
         });
     }
 
@@ -710,8 +762,40 @@ window.ourProjectsPageScript = function () {
         const project = allProjects.find(item => String(item.id) === String(projectId));
 
         if (project) {
-            openProjectDetail(project, false);
+            openProjectDetail(project, false, false);
         }
+    }
+
+    function bindProjectPageAnchors() {
+        document.querySelectorAll('a[href^="#"]').forEach(link => {
+            link.addEventListener("click", function (event) {
+                const hash = link.getAttribute("href");
+
+                if (!hash || hash === "#") {
+                    return;
+                }
+
+                const target = document.querySelector(hash);
+
+                if (!target) {
+                    return;
+                }
+
+                event.preventDefault();
+
+                window.setTimeout(function () {
+                    target.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start"
+                    });
+
+                    const url = new URL(window.location.href);
+
+                    url.hash = hash;
+                    window.history.replaceState(window.history.state, "", url.toString());
+                }, 80);
+            });
+        });
     }
 
     function bindEvents() {
@@ -738,19 +822,24 @@ window.ourProjectsPageScript = function () {
             });
         }
 
+        bindProjectPageAnchors();
+
         window.addEventListener("popstate", function () {
             const params = new URLSearchParams(window.location.search);
             const projectId = params.get("project");
 
             if (!projectId) {
-                closeProjectDetail(false);
+                if (!detail.hidden) {
+                    closeProjectDetail(false, false);
+                }
+
                 return;
             }
 
             const project = allProjects.find(item => String(item.id) === String(projectId));
 
             if (project) {
-                openProjectDetail(project, false);
+                openProjectDetail(project, false, false);
             }
         });
     }
