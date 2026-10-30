@@ -274,14 +274,15 @@
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transform: translate3d(-120vw, 0, 0);
+  //transform: translate3d(-120vw, 0, 0);
+  transform: translate3d(calc(-100% - 90px), 0, 0);
 
   transition:
           opacity 0.2s ease,
           visibility 0s linear 0.52s,
           transform 0.52s cubic-bezier(0.22, 1, 0.36, 1),
-          border-color 0.32s ease,
-          color 0.32s ease;
+          border-color 0.32s ease;
+        //  color 0.32s ease;
   will-change: transform, opacity;
 }
 
@@ -534,7 +535,7 @@ body.project-detail-open.project-view-visible.project-back-ready .project-detail
   display: block;
   width: calc(100% - 16px);
   height: clamp(210px, 18vw, 320px);
-  margin: 0 8px;
+  //margin: 0 1px;
   padding: 0;
   overflow: hidden;
   border: 0;

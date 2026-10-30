@@ -8,3 +8,5 @@
 /app/css/header_main.min.css
 /app/css/style.min.css
 /app/js/libs.min.js
+
+.env
