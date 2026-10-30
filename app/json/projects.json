@@ -3,7 +3,6 @@
     "id": "1",
     "service_type": "replacement",
     "main_photo_path": "replacement/roof1-abbosford/photo_3_2026-10-18_07-50-47.jpg",
-    "old_photo_path": "",
     "list_photos_path" : [
       "replacement/roof1-abbosford/photo_1_2026-10-18_07-50-47.jpg",
       "replacement/roof1-abbosford/photo_2_2026-10-18_07-50-47.jpg",
@@ -30,7 +29,6 @@
     "id": "2",
     "service_type": "replacement",
     "main_photo_path": "replacement/roof2-chilliwack/photo_4_2026-10-18_07-52-16.jpg",
-    "old_photo_path": "",
     "list_photos_path" : [
       "replacement/roof2-chilliwack/photo_3_2026-10-18_07-52-16.jpg",
       "replacement/roof2-chilliwack/photo_2_2026-10-18_07-52-16.jpg",
@@ -53,7 +51,6 @@
     "id": "3",
     "service_type": "replacement",
     "main_photo_path": "replacement/roof3-chilliwack_cultus_lake/photo_1_2026-10-18_07-53-21.jpg",
-    "old_photo_path": "",
     "list_photos_path" : [
       "replacement/roof3-chilliwack_cultus_lake/photo_2_2026-10-18_07-53-21.jpg",
       "replacement/roof3-chilliwack_cultus_lake/photo_3_2026-10-18_07-53-21.jpg",
@@ -81,7 +78,6 @@
     "id": "4",
     "service_type": "replacement",
     "main_photo_path": "replacement/roof4-chilliwack_cultus_lake/photo_4_2026-10-18_07-55-17.jpg",
-    "old_photo_path": "",
     "list_photos_path" : [
       "replacement/roof4-chilliwack_cultus_lake/photo_1_2026-10-18_07-55-17.jpg",
       "replacement/roof4-chilliwack_cultus_lake/photo_2_2026-10-18_07-55-17.jpg",
@@ -104,7 +100,6 @@
     "id": "5",
     "service_type": "replacement",
     "main_photo_path": "replacement/roof5-chilliwack/photo_4_2026-10-18_07-58-36.jpg",
-    "old_photo_path": "",
     "list_photos_path" : [
       "replacement/roof5-chilliwack/photo_1_2026-10-18_07-58-36.jpg",
       "replacement/roof5-chilliwack/photo_2_2026-10-18_07-58-36.jpg",
@@ -128,7 +123,6 @@
     "id": "6",
     "service_type": "replacement",
     "main_photo_path": "replacement/roof6-chilliwack/photo_3_2026-10-18_08-00-13.jpg",
-    "old_photo_path": "",
     "list_photos_path" : [
       "replacement/roof6-chilliwack/photo_1_2026-10-18_08-00-13.jpg",
       "replacement/roof6-chilliwack/photo_2_2026-10-18_08-00-13.jpg"
@@ -150,7 +144,6 @@
     "id": "7",
     "service_type": "replacement",
     "main_photo_path": "replacement/roof7-chilliwack/photo_4_2026-10-18_08-03-45.jpg",
-    "old_photo_path": "",
     "list_photos_path" : [
       "replacement/roof7-chilliwack/photo_1_2026-10-18_08-03-45.jpg",
       "replacement/roof7-chilliwack/photo_2_2026-10-18_08-03-45.jpg",
@@ -173,7 +166,6 @@
     "id": "8",
     "service_type": "replacement",
     "main_photo_path": "replacement/roof8-chilliwack/photo_7_2026-10-18_08-08-10.jpg",
-    "old_photo_path": "replacement/roof8-chilliwack/photo_9_2026-10-18_08-08-10.jpg",
     "list_photos_path" : [
       "replacement/roof8-chilliwack/photo_8_2026-10-18_08-08-10.jpg",
       "replacement/roof8-chilliwack/photo_6_2026-10-18_08-08-10.jpg",
@@ -200,7 +192,7 @@
     "id": "9",
     "service_type": "maintance",
     "main_photo_path": "maintance/roof9-vancouver/photo_8_2026-10-18_08-09-46.jpg",
-    "old_photo_path": "",
+
     "list_photos_path" : [
       "maintance/roof9-vancouver/photo_10_2026-10-18_08-09-46.jpg",
       "maintance/roof9-vancouver/photo_9_2026-10-18_08-09-46.jpg",
@@ -228,7 +220,6 @@
     "id": "10",
     "service_type": "replacement",
     "main_photo_path": "replacement/roof10-white_rock/photo_3_2026-10-18_08-19-10.jpg",
-    "old_photo_path": "replacement/roof10-white_rock/photo_2_2026-10-18_08-19-10.jpg",
     "list_photos_path" : [
       "replacement/roof10-white_rock/photo_4_2026-10-18_08-19-10.jpg",
       "replacement/roof10-white_rock/photo_1_2026-10-18_08-19-10.jpg"
@@ -250,7 +241,6 @@
     "id": "11",
     "service_type": "replacement",
     "main_photo_path": "replacement/roof11-chilliwack/SaveInta.com_655539966_18094696294844465_270098550092602524_n.jpg",
-    "old_photo_path": "",
     "list_photos_path" : [
       "replacement/roof11-chilliwack/SaveInta.com_659150066_18114698974592438_8591463550147899033_n.jpg",
       "replacement/roof11-chilliwack/SaveInta.com_655379993_18099522988750576_1035064749603334877_n.jpg",
@@ -276,7 +266,6 @@
     "id": "12",
     "service_type": "repair",
     "main_photo_path": "repair/roof12-chilliwack/SaveInta.com_654450996_18072062756207619_1114693168783183588_n.jpg",
-    "old_photo_path": "",
     "list_photos_path" : [
       "repair/roof12-chilliwack/SaveInta.com_649228246_17990114147927126_970606627645622553_n.jpg",
       "repair/roof12-chilliwack/SaveInta.com_652767027_18076074077138092_9205538035071354141_n.jpg",
@@ -306,7 +295,6 @@
     "id": "13",
     "service_type": "repair",
     "main_photo_path": "repair/roof13-chilliwack/SaveInta.com_656025916_18108014341836074_264367611769174681_n.jpg",
-    "old_photo_path": "",
     "list_photos_path" : [
       "repair/roof13-chilliwack/SaveInta.com_641285372_17986343204953599_6718699805520101871_n.jpg",
       "repair/roof13-chilliwack/SaveInta.com_651929842_18011355545683823_6680260021289548368_n.jpg",
@@ -332,7 +320,6 @@
     "id": "14",
     "service_type": "replacement",
     "main_photo_path": "replacement/roof14-chilliwack_promontory/SaveInta.com_670446547_18581056534011678_8012212656073974786_n.jpg",
-    "old_photo_path": "",
     "list_photos_path" : [
       "replacement/roof14-chilliwack_promontory/SaveInta.com_649217437_17958637574924906_6296439372495191925_n.jpg",
       "replacement/roof14-chilliwack_promontory/SaveInta.com_650787960_17996231222868034_4033117767474573298_n.jpg",
