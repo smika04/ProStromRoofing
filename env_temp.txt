@@ -1,0 +1,12 @@
+//////////////////////////////////////
+
+Cloudfare Turnstile
+
+Site_Public_Key in WebSite
+0x4AAAAAAFtcvnGHso2Ef6w8
+
+Secret_Key for backend/worker
+0x4AAAAAAFtcvt2zb-OJfqlnOtOLfdX0FNc
+
+////////////////////////////////////////
+
